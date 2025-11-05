@@ -1,0 +1,6 @@
+@CotizadorAutoMAPFRESeguros.Server_HostAddress = http://localhost:5144
+
+GET {{CotizadorAutoMAPFRESeguros.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

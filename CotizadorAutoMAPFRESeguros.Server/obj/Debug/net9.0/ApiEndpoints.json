@@ -1,0 +1,429 @@
+[
+  {
+    "ContainingType": "CotizadorAutoMAPFRESeguros.Server.Controllers.CotizadorController",
+    "Method": "accesories",
+    "RelativePath": "api/Cotizador/accesories/{vehicleBrandCode}/{vehicleModelCode}/{vehicleSubModelCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "vehicleBrandCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "vehicleModelCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "vehicleSubModelCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CotizadorAutoMAPFRESeguros.Share.Models.Catalog, CotizadorAutoMAPFRESeguros.Share, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CotizadorAutoMAPFRESeguros.Server.Controllers.CotizadorController",
+    "Method": "BuscarNombre",
+    "RelativePath": "api/Cotizador/BuscarNombre/{companiaId}/{identificacion}/{tipoIdentificacion}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "companiaId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "identificacion",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "tipoIdentificacion",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CotizadorAutoMAPFRESeguros.Share.Models.IdentificacionDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CotizadorAutoMAPFRESeguros.Server.Controllers.CotizadorController",
+    "Method": "drivingZones",
+    "RelativePath": "api/Cotizador/drivingZones",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CotizadorAutoMAPFRESeguros.Share.Models.Catalog, CotizadorAutoMAPFRESeguros.Share, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CotizadorAutoMAPFRESeguros.Server.Controllers.CotizadorController",
+    "Method": "gasEquipements",
+    "RelativePath": "api/Cotizador/gasEquipements",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CotizadorAutoMAPFRESeguros.Share.Models.Catalog, CotizadorAutoMAPFRESeguros.Share, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CotizadorAutoMAPFRESeguros.Server.Controllers.CotizadorController",
+    "Method": "multipleAutoTrebol",
+    "RelativePath": "api/Cotizador/multipleAutoTrebol",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "CotizadorAutoMAPFRESeguros.Share.Models.AutoTrebolRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CotizadorAutoMAPFRESeguros.Share.Models.CotizadorResponse, CotizadorAutoMAPFRESeguros.Share, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CotizadorAutoMAPFRESeguros.Server.Controllers.CotizadorController",
+    "Method": "provinces",
+    "RelativePath": "api/Cotizador/provinces/{countryCode}/{stateCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "countryCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "stateCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CotizadorAutoMAPFRESeguros.Share.Models.Catalog, CotizadorAutoMAPFRESeguros.Share, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CotizadorAutoMAPFRESeguros.Server.Controllers.CotizadorController",
+    "Method": "SeachInsurabilityScale",
+    "RelativePath": "api/Cotizador/SeachInsurabilityScale",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "CotizadorAutoMAPFRESeguros.Share.Models.InsurabilityScaleRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CotizadorAutoMAPFRESeguros.Share.Models.VehiclePrices",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CotizadorAutoMAPFRESeguros.Server.Controllers.CotizadorController",
+    "Method": "states",
+    "RelativePath": "api/Cotizador/states",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CotizadorAutoMAPFRESeguros.Share.Models.Catalog, CotizadorAutoMAPFRESeguros.Share, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CotizadorAutoMAPFRESeguros.Server.Controllers.CotizadorController",
+    "Method": "towns",
+    "RelativePath": "api/Cotizador/towns/{countryCode}/{provinceCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "countryCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "provinceCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CotizadorAutoMAPFRESeguros.Share.Models.Catalog, CotizadorAutoMAPFRESeguros.Share, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CotizadorAutoMAPFRESeguros.Server.Controllers.CotizadorController",
+    "Method": "vehicleBrands",
+    "RelativePath": "api/Cotizador/vehicleBrands/{companiaId}/{vehicleTypeCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "companiaId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "vehicleTypeCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CotizadorAutoMAPFRESeguros.Share.Models.Catalog, CotizadorAutoMAPFRESeguros.Share, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CotizadorAutoMAPFRESeguros.Server.Controllers.CotizadorController",
+    "Method": "vehicleModels",
+    "RelativePath": "api/Cotizador/vehicleModels/{companiaId}/{vehicleBrandId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "companiaId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "vehicleBrandId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CotizadorAutoMAPFRESeguros.Share.Models.Catalog, CotizadorAutoMAPFRESeguros.Share, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CotizadorAutoMAPFRESeguros.Server.Controllers.CotizadorController",
+    "Method": "vehicleSubModels",
+    "RelativePath": "api/Cotizador/vehicleSubModels/{companiaId}/{vehicleBrandCode}/{vehicleModelCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "companiaId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "vehicleBrandCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "vehicleModelCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CotizadorAutoMAPFRESeguros.Share.Models.Catalog, CotizadorAutoMAPFRESeguros.Share, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CotizadorAutoMAPFRESeguros.Server.Controllers.CotizadorController",
+    "Method": "vehicleSubModelYears",
+    "RelativePath": "api/Cotizador/vehicleSubModelYears/{vehicleBrandCode}/{vehicleModelCode}/{vehicleSubModelCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "vehicleBrandCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "vehicleModelCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "vehicleSubModelCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CotizadorAutoMAPFRESeguros.Share.Models.Catalog, CotizadorAutoMAPFRESeguros.Share, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CotizadorAutoMAPFRESeguros.Server.Controllers.CotizadorController",
+    "Method": "vehicleUses",
+    "RelativePath": "api/Cotizador/vehicleUses/{companiaId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "companiaId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CotizadorAutoMAPFRESeguros.Share.Models.Catalog, CotizadorAutoMAPFRESeguros.Share, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CotizadorAutoMAPFRESeguros.Server.Controllers.WeatherForecastController",
+    "Method": "Get",
+    "RelativePath": "WeatherForecast",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CotizadorAutoMAPFRESeguros.Server.WeatherForecast, CotizadorAutoMAPFRESeguros.Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetWeatherForecast"
+  }
+]

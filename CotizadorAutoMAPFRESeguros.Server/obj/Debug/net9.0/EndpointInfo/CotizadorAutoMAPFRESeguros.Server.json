@@ -1,0 +1,1378 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Web API Salesforce",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Cotizador/vehicleBrands/{companiaId}/{vehicleTypeCode}": {
+      "get": {
+        "tags": [
+          "Cotizador"
+        ],
+        "parameters": [
+          {
+            "name": "companiaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "vehicleTypeCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cotizador/vehicleModels/{companiaId}/{vehicleBrandId}": {
+      "get": {
+        "tags": [
+          "Cotizador"
+        ],
+        "parameters": [
+          {
+            "name": "companiaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "vehicleBrandId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cotizador/vehicleUses/{companiaId}": {
+      "get": {
+        "tags": [
+          "Cotizador"
+        ],
+        "parameters": [
+          {
+            "name": "companiaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cotizador/gasEquipements": {
+      "get": {
+        "tags": [
+          "Cotizador"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cotizador/drivingZones": {
+      "get": {
+        "tags": [
+          "Cotizador"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cotizador/vehicleSubModels/{companiaId}/{vehicleBrandCode}/{vehicleModelCode}": {
+      "get": {
+        "tags": [
+          "Cotizador"
+        ],
+        "parameters": [
+          {
+            "name": "companiaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "vehicleBrandCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "vehicleModelCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cotizador/states": {
+      "get": {
+        "tags": [
+          "Cotizador"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cotizador/provinces/{countryCode}/{stateCode}": {
+      "get": {
+        "tags": [
+          "Cotizador"
+        ],
+        "parameters": [
+          {
+            "name": "countryCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "stateCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cotizador/towns/{countryCode}/{provinceCode}": {
+      "get": {
+        "tags": [
+          "Cotizador"
+        ],
+        "parameters": [
+          {
+            "name": "countryCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "provinceCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cotizador/accesories/{vehicleBrandCode}/{vehicleModelCode}/{vehicleSubModelCode}": {
+      "get": {
+        "tags": [
+          "Cotizador"
+        ],
+        "parameters": [
+          {
+            "name": "vehicleBrandCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "vehicleModelCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "vehicleSubModelCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cotizador/vehicleSubModelYears/{vehicleBrandCode}/{vehicleModelCode}/{vehicleSubModelCode}": {
+      "get": {
+        "tags": [
+          "Cotizador"
+        ],
+        "parameters": [
+          {
+            "name": "vehicleBrandCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "vehicleModelCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "vehicleSubModelCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Catalog"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cotizador/SeachInsurabilityScale": {
+      "post": {
+        "tags": [
+          "Cotizador"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsurabilityScaleRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsurabilityScaleRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsurabilityScaleRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehiclePrices"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehiclePrices"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehiclePrices"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cotizador/multipleAutoTrebol": {
+      "post": {
+        "tags": [
+          "Cotizador"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AutoTrebolRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AutoTrebolRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AutoTrebolRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CotizadorResponse"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CotizadorResponse"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CotizadorResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cotizador/BuscarNombre/{companiaId}/{identificacion}/{tipoIdentificacion}": {
+      "get": {
+        "tags": [
+          "Cotizador"
+        ],
+        "parameters": [
+          {
+            "name": "companiaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "identificacion",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tipoIdentificacion",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/IdentificacionDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IdentificacionDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IdentificacionDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/WeatherForecast": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "operationId": "GetWeatherForecast",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Accesory": {
+        "type": "object",
+        "properties": {
+          "accesoryCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "accesoryName": {
+            "type": "string",
+            "nullable": true
+          },
+          "accesoryValue": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Address": {
+        "type": "object",
+        "properties": {
+          "addressId": {
+            "type": "string",
+            "nullable": true
+          },
+          "addressTypeCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "addressName": {
+            "type": "string",
+            "nullable": true
+          },
+          "stateCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "checkInd": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AutoTrebolRequest": {
+        "type": "object",
+        "properties": {
+          "policyHolder": {
+            "$ref": "#/components/schemas/PolicyHolder"
+          },
+          "owner": {
+            "$ref": "#/components/schemas/Owner"
+          },
+          "accesories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Accesory"
+            },
+            "nullable": true
+          },
+          "coverages": {
+            "$ref": "#/components/schemas/Coverages"
+          },
+          "fixedData": {
+            "$ref": "#/components/schemas/FixedData"
+          },
+          "variableData": {
+            "$ref": "#/components/schemas/VariableData"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Catalog": {
+        "type": "object",
+        "properties": {
+          "parameterId": {
+            "type": "string",
+            "nullable": true
+          },
+          "parameterName": {
+            "type": "string",
+            "nullable": true
+          },
+          "logo": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ContactMethod": {
+        "type": "object",
+        "properties": {
+          "contactMethodId": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactMethodTypeCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactMethodTypeDesc": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactTypeCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactMethodValue": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactDefaultInd": {
+            "type": "boolean"
+          },
+          "contactCheckInd": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CotizadorResponse": {
+        "type": "object",
+        "properties": {
+          "commercialProductCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "commercialProductName": {
+            "type": "string",
+            "nullable": true
+          },
+          "quotationData": {
+            "$ref": "#/components/schemas/QuotationData"
+          },
+          "coverages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Coverage"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Coverage": {
+        "type": "object",
+        "properties": {
+          "coverageId": {
+            "type": "string",
+            "nullable": true
+          },
+          "coverageDesc": {
+            "type": "string",
+            "nullable": true
+          },
+          "limitName": {
+            "type": "string",
+            "nullable": true
+          },
+          "sumInsuredAmn": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Coverages": {
+        "type": "object",
+        "properties": {
+          "judicialBail": {
+            "type": "string",
+            "nullable": true
+          },
+          "aeroAmbulance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EducativeInformation": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "FixedData": {
+        "type": "object",
+        "properties": {
+          "currencyId": {
+            "type": "string",
+            "nullable": true
+          },
+          "dueDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "effectiveDate": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "IdentificacionDTO": {
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "string",
+            "nullable": true
+          },
+          "naturalPerson": {
+            "$ref": "#/components/schemas/NaturalPerson"
+          },
+          "loyaltyPlan": {
+            "$ref": "#/components/schemas/LoyaltyPlan"
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "contactMethods": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContactMethod"
+            },
+            "nullable": true
+          },
+          "identificationMethod": {
+            "$ref": "#/components/schemas/IdentificationMethod"
+          }
+        },
+        "additionalProperties": false
+      },
+      "IdentificationMethod": {
+        "type": "object",
+        "properties": {
+          "identityDocumentTypeCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "identityDocumentNumber": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "InsurabilityScaleRequest": {
+        "type": "object",
+        "properties": {
+          "currencyId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "vehicleBrandCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "vehicleModelCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "vehicleSubModelCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "vehicleSubModelYearNum": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LabourInformation": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "LoyaltyPlan": {
+        "type": "object",
+        "properties": {
+          "applyLoyaltyPlanInd": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NaturalPerson": {
+        "type": "object",
+        "properties": {
+          "personName": {
+            "$ref": "#/components/schemas/PersonName"
+          },
+          "nickname": {
+            "type": "string",
+            "nullable": true
+          },
+          "genderCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "genderDesc": {
+            "type": "string",
+            "nullable": true
+          },
+          "educativeInformation": {
+            "$ref": "#/components/schemas/EducativeInformation"
+          },
+          "labourInformation": {
+            "$ref": "#/components/schemas/LabourInformation"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Owner": {
+        "type": "object",
+        "properties": {
+          "identityDocumentTypeCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "identityDocumentNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstSurname": {
+            "type": "string",
+            "nullable": true
+          },
+          "secondSurname": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobile": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "stateCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "provinces": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PersonName": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstSurname": {
+            "type": "string",
+            "nullable": true
+          },
+          "secondSurname": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PolicyHolder": {
+        "type": "object",
+        "properties": {
+          "identityDocumentTypeCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "identityDocumentNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstSurname": {
+            "type": "string",
+            "nullable": true
+          },
+          "secondSurname": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobile": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "stateCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "provinces": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PremiumDetail": {
+        "type": "object",
+        "properties": {
+          "totGrossAmn": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuotationData": {
+        "type": "object",
+        "properties": {
+          "projectQuoteId": {
+            "type": "string",
+            "nullable": true
+          },
+          "endorsementNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "effectiveDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dueDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "captureDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "policyRetainedInd": {
+            "type": "boolean"
+          },
+          "premiumDetail": {
+            "$ref": "#/components/schemas/PremiumDetail"
+          }
+        },
+        "additionalProperties": false
+      },
+      "VariableData": {
+        "type": "object",
+        "properties": {
+          "autoAssistanceCompany": {
+            "type": "string",
+            "nullable": true
+          },
+          "commercialProductCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "drivingZone": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gasEquipment": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "haitiDriving": {
+            "type": "string",
+            "nullable": true
+          },
+          "vehicleBrandCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "vehicleModelCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "vehicleSubModelCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "vehicleSubModelYearNum": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "vehicleUseCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "vehicleValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "chassisNumber": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "VehiclePrices": {
+        "type": "object",
+        "properties": {
+          "vehicleSubModelMaxValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "vehicleSubModelMinValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "vehicleSubModelValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "vehicleSubModelYearNum": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WeatherForecast": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "temperatureC": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "temperatureF": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "ApiKey": {
+        "type": "apiKey",
+        "description": "API Key requerida en el encabezado 'X-API-KEY'",
+        "name": "X-API-KEY",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "ApiKey": [ ]
+    }
+  ]
+}

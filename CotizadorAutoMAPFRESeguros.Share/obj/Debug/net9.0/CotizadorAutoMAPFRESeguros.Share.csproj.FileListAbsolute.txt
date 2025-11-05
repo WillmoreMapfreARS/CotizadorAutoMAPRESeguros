@@ -1,0 +1,13 @@
+D:\Repositorio\CotizadorAutoMAPRESeguros\CotizadorAutoMAPFRESeguros.Share\bin\Debug\net9.0\CotizadorAutoMAPFRESeguros.Share.deps.json
+D:\Repositorio\CotizadorAutoMAPRESeguros\CotizadorAutoMAPFRESeguros.Share\bin\Debug\net9.0\CotizadorAutoMAPFRESeguros.Share.dll
+D:\Repositorio\CotizadorAutoMAPRESeguros\CotizadorAutoMAPFRESeguros.Share\bin\Debug\net9.0\CotizadorAutoMAPFRESeguros.Share.pdb
+D:\Repositorio\CotizadorAutoMAPRESeguros\CotizadorAutoMAPFRESeguros.Share\obj\Debug\net9.0\CotizadorAutoMAPFRESeguros.Share.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repositorio\CotizadorAutoMAPRESeguros\CotizadorAutoMAPFRESeguros.Share\obj\Debug\net9.0\CotizadorAutoMAPFRESeguros.Share.AssemblyInfoInputs.cache
+D:\Repositorio\CotizadorAutoMAPRESeguros\CotizadorAutoMAPFRESeguros.Share\obj\Debug\net9.0\CotizadorAutoMAPFRESeguros.Share.AssemblyInfo.cs
+D:\Repositorio\CotizadorAutoMAPRESeguros\CotizadorAutoMAPFRESeguros.Share\obj\Debug\net9.0\CotizadorAutoMAPFRESeguros.Share.csproj.CoreCompileInputs.cache
+D:\Repositorio\CotizadorAutoMAPRESeguros\CotizadorAutoMAPFRESeguros.Share\obj\Debug\net9.0\CotizadorAutoMAPFRESeguros.Share.sourcelink.json
+D:\Repositorio\CotizadorAutoMAPRESeguros\CotizadorAutoMAPFRESeguros.Share\obj\Debug\net9.0\CotizadorAutoMAPFRESeguros.Share.dll
+D:\Repositorio\CotizadorAutoMAPRESeguros\CotizadorAutoMAPFRESeguros.Share\obj\Debug\net9.0\refint\CotizadorAutoMAPFRESeguros.Share.dll
+D:\Repositorio\CotizadorAutoMAPRESeguros\CotizadorAutoMAPFRESeguros.Share\obj\Debug\net9.0\CotizadorAutoMAPFRESeguros.Share.pdb
+D:\Repositorio\CotizadorAutoMAPRESeguros\CotizadorAutoMAPFRESeguros.Share\obj\Debug\net9.0\ref\CotizadorAutoMAPFRESeguros.Share.dll
+D:\Repositorio\CotizadorAutoMAPRESeguros\CotizadorAutoMAPFRESeguros.Share\obj\Debug\net9.0\CotizadorAutoMAPFRESeguros.Share.csproj.AssemblyReference.cache

@@ -1,0 +1,97 @@
+﻿@using MudBlazor
+@inject IJSRuntime JSRuntime
+
+@inherits LayoutComponentBase
+
+<MudThemeProvider Theme="MyCustomTheme" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+<MudPopoverProvider></MudPopoverProvider>
+
+<MudLayout>
+    <MudAppBar Color="Color.Primary" Elevation="1">
+        <img src="mapfre-bhd-seguros-logo-3.webp" style="width: 200px; height: auto;  margin-left: -3px;" />
+
+        <MudHidden Breakpoint="Breakpoint.MdAndUp" Invert="true">
+            @if (!isMobile)
+            {
+                <MudSpacer />
+                <div>
+                    <h5 style="color:#6B6B6B; align-content:center; text-align:center; margin: 10px">Calcula el precio de tu seguro de vehículo</h5>
+                </div>
+
+            }
+        </MudHidden>
+       
+
+        @* <MudText Align=Align.Center" Typo="Typo.h6" Style="color:white">Calcula el precio de tu seguro de vehículo</MudText> *@
+        <MudSpacer />
+        <MudFab Color="Color.Secondary" Size="Size.Small" StartIcon="@Icons.Material.Filled.PhoneAndroid" Style="elevation:0" title="Llamar" />
+    </MudAppBar>
+    @* *@
+        <body class="img" style="margin: 0 !important;    border: 0 !important;    padding: 0 !important">
+        <MudContainer >    
+            @Body
+            </MudContainer> 
+        </body>
+       
+    @**@
+
+</MudLayout>
+@code {
+
+    private bool isMobile;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            isMobile = await JSRuntime.InvokeAsync<bool>("isMobile");
+            StateHasChanged();
+        }
+    }
+
+    MudTheme MyCustomTheme = new MudTheme()
+    {
+        PaletteLight = new PaletteLight()
+        {
+            // Primary = Colors.Red.Darken1,
+            // Secondary = "#6B6B6B",
+            // AppbarBackground = Colors.Red.Darken1,
+            // Background = Colors.Gray.Lighten5
+
+            Primary = Colors.Gray.Lighten5,
+            Secondary = Colors.Red.Darken1,// "#6B6B6B",
+            AppbarBackground = Colors.Gray.Lighten5,
+            Background = Colors.Gray.Lighten5,
+            // ActionDefault = "#6B6B6B",
+            // ActionDisabledBackground = "#6B6B6B",
+            // TextPrimary = "#6B6B6B",
+            // TextSecondary = "#6B6B6B",
+            // TextDisabled = "#6B6B6B",
+            // InfoContrastText = "#6B6B6B",
+            // LinesDefault = "#6B6B6B",
+            // LinesInputs = "#6B6B6B",
+            // OverlayLight = "#6B6B6B",
+            // PrimaryLighten = "#6B6B6B",
+            // Skeleton = "#6B6B6B"
+
+            
+
+        },
+        PaletteDark = new PaletteDark()
+        {
+          
+            Primary = Colors.Red.Lighten1,
+
+        },
+        Typography = new Typography()
+        {
+            Default = new DefaultTypography()
+            {
+                FontFamily = new[] { "Montserrat" }
+            }
+        },
+      
+    };
+}

@@ -1,0 +1,1628 @@
+﻿@page "/"
+@inject IJSRuntime JSRuntime
+
+@inject NavigationManager navigation
+@inject IDialogService Dialog
+@inject IRepositorio repositorio
+@inject SweetAlertService Swal;
+@using MudBlazor
+@using Newtonsoft.Json
+@using System.Globalization
+<style>
+    .mud-typography, .mud-typography-body1 {
+        color: #6B6B6B !important;
+    }
+
+    .mud-palette-primary {
+        color: #6B6B6B !important;
+    }
+
+    h2 {
+        color: #6B6B6B !important;
+        font-weight: bold;
+    }
+
+    .mud-input-root-outlined {
+        text-align: center !important;
+    }
+
+    .mud-input-outlined.mud-input-focused {
+        border-color: #ff0000 !important; /* rojo */
+    }
+
+        .mud-input-outlined.mud-input-focused:hover {
+            border-color: #ff0000 !important;
+        }
+
+    .mud-autocomplete .mud-input-root.mud-input-root-filled {
+        color: var(--mud-palette-info);
+    }
+
+        .mud-autocomplete .mud-input-root.mud-input-root-filled .mud-input-slot::after {
+            background-color: var(--mud-palette-info);
+        }
+
+</style>
+<div class="p-0">
+    <MudPaper Style="width: auto; margin-top:80px; background-color:transparent !important;" Elevation="0">
+
+        <MudHidden Breakpoint="Breakpoint.SmAndDown" Invert="true">
+            <div style="padding-top:10px">
+                <h2 style="color:#6B6B6B; align-content:center; text-align:center; margin: 10px">Calcula el precio de tu seguro de vehículo</h2>
+            </div>
+
+        </MudHidden>
+
+        <div class="d-flex justify-content-between align-items-center">
+
+            @if (!_completed)
+            {
+                <div>
+                    <MudButton FullWidth="false" OnClick="@(() => Reset())">Reiniciar</MudButton>
+                    <MudIconButton OnClick="@(() => PreviousStep())" Icon="@Icons.Material.Filled.ArrowBack" Color="Color.Secondary" Disabled="@(_index <= 0)" />
+                </div>
+
+                <div>
+
+                    <MudIconButton OnClick="@(() => NextStep())" Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Secondary" />
+                </div>
+            }
+
+        </div>
+
+
+
+        <MudStepper @bind-ActiveIndex="_index" CompletedStepColor="Color.Secondary" CurrentStepColor="Color.Secondary" NavClass="border-b mud-border-lines-default" StepClass="pt-4" ShowResetButton>
+
+            <TitleTemplate>@*This empty template prevents rendering the title*@</TitleTemplate>
+            <ConnectorTemplate Context="step">
+                <div class="mud-stepper-nav-connector">
+                    @{
+                        int value = step.Completed ? 100 : 0;
+                        <MudProgressLinear Indeterminate="@(step.IsActive)" Striped Value="value" Min="0" Max="100" Color="Color.Secondary" Style="height: 2px; background-color: #d4ddeb; border-radius: 2px;" />
+                    }
+                </div>
+            </ConnectorTemplate>
+            <LabelTemplate>
+                @if (context.IsActive)
+                {
+
+                    <MudImage Src="car.png"></MudImage>
+                }
+                else if (context.Completed)
+                {
+                    <div style="height: 10px; width:10px; background-color: var(--mud-palette-success); border-radius: 50%;"></div>
+
+                }
+                else
+                {
+                    <div style="height: 10px; width:10px; background-color: #d4ddeb; border-radius: 50%;"></div>
+
+                }
+
+            </LabelTemplate>
+            <ChildContent>
+
+                <MudStep Title="Marcas">
+                    <MudHidden Breakpoint="Breakpoint.MdAndUp" Invert="true">
+                        <div class="row" style="text-align:center;justify-content:center">
+                            <div class="p-md-5" style="width:700px; text-align:center;">
+                                <h2>¿Cuál es la marca de tu vehículo?</h2>
+
+                                <MudGrid Justify="Justify.Center">
+
+                                    @if (Marcas.Count() > 0)
+                                    {
+                                        foreach (var item in Marcas)
+                                        {
+                                            <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
+                                                <MudButton OnClick="@(() => MarcaChange(item.parameterId))">
+                                                    <MudPaper Width="150px" Elevation="0">
+                                                        <CustomCardComponent imgSrc="@item.logo" descripcion="@item.parameterName"></CustomCardComponent>
+                                                    </MudPaper>
+                                                </MudButton>
+                                            </MudItem>
+                                        }
+
+                                    }
+
+                                </MudGrid>
+
+                                <div class="row p-5">
+                                    <MudGrid Justify="Justify.Center">
+                                        <MudItem Style="margin-top:15px" Xs="12" Sm="12" Md="8" Lg="8" Xl="8">
+
+                                            <MudAutocomplete T="Catalog"
+                                                             SearchFunc="@Search" AdornmentIcon="@Icons.Material.Filled.Search" Label="Todas las marcas"
+                                                             Variant="Variant.Outlined"
+                                                             AdornmentColor="Color.Secondary"
+                                                             Color=""
+                                                             ValueChanged="@((e)=>MarcaChange(e.parameterId))"
+                                                             ToStringFunc="@(e=> e==null?null : $"{e.parameterName}")" />
+
+                                        </MudItem>
+
+                                    </MudGrid>
+
+                                </div>
+                            </div>
+                        </div>
+                    </MudHidden>
+                    <MudHidden Breakpoint="Breakpoint.SmAndDown" Invert="true">
+                        <div class="p-md-5;">
+                            <h2 style="text-align: center;">¿Cuál es la marca de tu vehículo?</h2>
+                            <MudGrid Justify="Justify.Center">
+
+                                @if (Marcas.Count() > 0)
+                                {
+                                    var count = 1;
+                                    foreach (var item in Marcas)
+                                    {
+                                        if (count <= 10)
+                                        {
+                                            <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
+                                                <MudButton OnClick="@(() => ModeloChange(item.parameterId))">
+                                                    <MudPaper Width="150px">
+                                                        <CustomCardComponent imgSrc="@item.logo" descripcion="@item.parameterName"></CustomCardComponent>
+                                                    </MudPaper>
+                                                </MudButton>
+                                            </MudItem>
+                                            count++;
+                                        }
+
+                                    }
+
+                                }
+
+                            </MudGrid>
+
+                            <div class="row p-5">
+                                <MudGrid Justify="Justify.Center">
+                                    <MudItem Style="margin-top:15px" Xs="12" Sm="12" Md="8" Lg="8" Xl="8">
+                                        <MudAutocomplete T="Catalog"
+                                                         SearchFunc="@SearchModel" AdornmentIcon="@Icons.Material.Filled.Search" Label="Todas los marcas"
+                                                         Variant="Variant.Outlined"
+                                                         AdornmentColor="Color.Secondary"
+                                                         ValueChanged="@((e)=>ModeloChange(e.parameterId))"
+                                                         ToStringFunc="@(e=> e==null?null : $"{e.parameterName}")" />
+
+                                    </MudItem>
+
+                                </MudGrid>
+
+
+
+
+                            </div>
+                        </div>
+
+                    </MudHidden>
+
+
+                </MudStep>
+                <MudStep Title="Modelos">
+                    <MudHidden Breakpoint="Breakpoint.MdAndUp" Invert="true">
+                        <div class="row" style="text-align:center;justify-content:center">
+                            <div class="p-md-5" style="width:100%; text-align:center;">
+                                <h2>¿Cuál es el modelo de tu <b>@Marca</b>?</h2>
+
+                                @*        <MudGrid Justify="Justify.Center">
+
+                                    @if (Modelos.Count() > 0)
+                                    {
+
+
+
+                                        var count = 1;
+                                        foreach (var item in Modelos)
+                                        {
+                                            if (count <= 10)
+                                            {
+                                                <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
+                                                    <MudButton OnClick="@(() => ModeloChange(item.parameterId))">
+                                                        <MudPaper Width="250px" Elevation="0">
+
+                                                            <MudCard>
+                                                                <MudCardContent>
+                                                                    <MudText Align="Align.Center">@item.parameterName</MudText>
+
+                                                                </MudCardContent>
+
+                                                            </MudCard>
+
+                                                        </MudPaper>
+                                                    </MudButton>
+                                                </MudItem>
+                                            }
+                                            count++;
+
+                                        }
+
+                                    }
+
+                                </MudGrid> *@
+
+                                <div class="row p-5">
+                                    <MudGrid Justify="Justify.Center">
+                                        <MudItem Style="margin-top:15px" Xs="12" Sm="12" Md="8" Lg="8" Xl="8">
+
+                                            <MudAutocomplete T="Catalog"
+                                                             SearchFunc="@SearchModel" AdornmentIcon="@Icons.Material.Filled.Search" Label="Todos los modelos"
+                                                             Variant="Variant.Outlined"
+                                                             AdornmentColor="Color.Secondary"
+                                                             ValueChanged="@((e)=>ModeloChange(e.parameterId))"
+                                                             ToStringFunc="@(e=> e==null?null : $"{e.parameterName}")" />
+
+                                        </MudItem>
+
+                                    </MudGrid>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    </MudHidden>
+                    <MudHidden Breakpoint="Breakpoint.SmAndDown" Invert="true">
+                        <div class="p-md-5;">
+                            <h2 style="text-align: center;">¿Cuál es el modelo de tu <b>@Marca</b>?</h2>
+                            @*      <MudGrid Justify="Justify.Center">
+
+                                @if (Modelos.Count() > 0)
+                                {
+                                    var count = 1;
+                                    foreach (var item in Modelos)
+                                    {
+                                        if (count <= 10)
+                                        {
+                                            <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
+                                                <MudButton OnClick="@(() => ModeloChange(item.parameterId))">
+                                                    <MudPaper Width="150px">
+                                                        <MudCard>
+                                                            <MudCardContent>
+                                                                <MudText Align="Align.Center" Style="font-size:14px">@item.parameterName</MudText>
+
+                                                            </MudCardContent>
+
+                                                        </MudCard>
+                                                    </MudPaper>
+                                                </MudButton>
+                                            </MudItem>
+                                        }
+                                        count++;
+                                    }
+
+                                }
+
+                            </MudGrid> *@
+
+                            <div class="row p-5">
+                                <MudGrid Justify="Justify.Center">
+                                    <MudItem Style="margin-top:15px" Xs="12" Sm="12" Md="8" Lg="8" Xl="8">
+                                        <MudAutocomplete T="Catalog"
+                                                         SearchFunc="@SearchModel" AdornmentIcon="@Icons.Material.Filled.Search" Label="Todos los modelos"
+                                                         Variant="Variant.Outlined"
+                                                         AdornmentColor="Color.Secondary"
+                                                         ValueChanged="@((e)=>ModeloChange(e.parameterId))"
+                                                         ToStringFunc="@(e=> e==null?null : $"{e.parameterName}")" />
+
+                                    </MudItem>
+
+                                </MudGrid>
+
+
+
+
+                            </div>
+                        </div>
+
+                    </MudHidden>
+
+
+                </MudStep>
+                <MudStep Title="SubModelos">
+                    <MudHidden Breakpoint="Breakpoint.MdAndUp" Invert="true">
+                        <div class="row" style="text-align:center;justify-content:center">
+                            <div class="p-md-5" style="width:100%; text-align:center;">
+                                <h2>¿Cuál es el submodelo de tu <b>@Marca</b>?</h2>
+
+                                @*  <MudGrid Justify="Justify.Center">
+
+                                    @if (SubModelos.Count() > 0)
+                                    {
+                                        var count = 0;
+                                        foreach (var item in SubModelos)
+                                        {
+                                            if (count <= 10)
+                                            {
+                                                <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
+                                                    <MudButton OnClick="@(() => SubModeloChange(item.parameterId))">
+                                                        <MudPaper Width="250px" Elevation="0">
+
+                                                            <MudCard>
+                                                                <MudCardContent>
+                                                                    <MudText Align="Align.Center">@item.parameterName</MudText>
+
+                                                                </MudCardContent>
+
+                                                            </MudCard>
+
+                                                        </MudPaper>
+                                                    </MudButton>
+                                                </MudItem>
+                                            }
+                                            count++;
+
+                                        }
+
+                                    }
+
+                                </MudGrid>
+ *@
+                                <div class="row p-5">
+                                    <MudGrid Justify="Justify.Center">
+                                        <MudItem Style="margin-top:15px" Xs="12" Sm="12" Md="8" Lg="8" Xl="8">
+
+                                            <MudAutocomplete T="Catalog"
+                                                             SearchFunc="@SearchSubModelo" AdornmentIcon="@Icons.Material.Filled.Search" Label="Todos los submodelos"
+                                                             Variant="Variant.Outlined"
+                                                             AdornmentColor="Color.Secondary"
+                                                             ValueChanged="@((e)=>SubModeloChange(e.parameterId))"
+                                                             ToStringFunc="@(e=> e==null?null : $"{e.parameterName}")" />
+
+                                        </MudItem>
+
+                                    </MudGrid>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </MudHidden>
+                    <MudHidden Breakpoint="Breakpoint.SmAndDown" Invert="true">
+                        <div class="p-md-5;">
+                            <h2 style="text-align: center;">¿Cuál es el submodelo de tu <b>@Marca</b>?</h2>
+                            @*     <MudGrid Justify="Justify.Center">
+
+                                @if (Marcas.Count() > 0)
+                                {
+                                    var count = 0;
+                                    foreach (var item in Marcas)
+                                    {
+                                        if (count <= 10)
+                                        {
+                                            <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
+                                                <MudButton OnClick="@(() => ModeloChange(item.parameterId))">
+                                                    <MudPaper Width="150px">
+                                                        <MudCard>
+                                                            <MudCardContent>
+                                                                <MudText Align="Align.Center" Style="font-size:14px">@item.parameterName</MudText>
+
+                                                            </MudCardContent>
+
+                                                        </MudCard>
+                                                    </MudPaper>
+                                                </MudButton>
+                                            </MudItem>
+
+                                        }
+                                        count++;
+                                    }
+
+                                }
+
+                            </MudGrid> *@
+
+                            <div class="row p-5">
+                                <MudGrid Justify="Justify.Center">
+                                    <MudItem Style="margin-top:15px" Xs="12" Sm="12" Md="8" Lg="8" Xl="8">
+                                        <MudAutocomplete T="Catalog"
+                                                         SearchFunc="@SearchSubModelo" AdornmentIcon="@Icons.Material.Filled.Search" Label="Todos los submodelos"
+                                                         Variant="Variant.Outlined"
+                                                         AdornmentColor="Color.Secondary"
+                                                         ValueChanged="@((e)=>ModeloChange(e.parameterId))"
+                                                         ToStringFunc="@(e=> e==null?null : $"{e.parameterName}")" />
+
+                                    </MudItem>
+
+                                </MudGrid>
+
+
+
+
+                            </div>
+                        </div>
+
+                    </MudHidden>
+
+
+                </MudStep>
+                <MudStep Title="Años">
+                    <MudHidden Breakpoint="Breakpoint.MdAndUp" Invert="true">
+                        <div class="row" style="text-align:center;justify-content:center">
+                            <div class="p-md-5" style="width:100%; text-align:center;">
+                                <h2>¿Cuál es el año de tu <b>@Marca</b>?</h2>
+
+                                @*   <MudGrid Justify="Justify.Center">
+
+                                    @if (Years.Count() > 0)
+                                    {
+                                        var count = 1;
+                                        foreach (var item in Years)
+                                        {
+                                            if (count <= 10)
+                                            {
+                                                <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
+                                                    <MudButton OnClick="@(() => YearChange(item.parameterId))">
+                                                        <MudPaper Width="250px" Elevation="0">
+
+                                                            <MudCard>
+                                                                <MudCardContent>
+                                                                    <MudText Align="Align.Center">@item.parameterId</MudText>
+
+                                                                </MudCardContent>
+
+                                                            </MudCard>
+
+                                                        </MudPaper>
+                                                    </MudButton>
+                                                </MudItem>
+                                            }
+
+                                            count++;
+                                        }
+
+                                    }
+
+                                </MudGrid> *@
+
+                                <div class="row p-5">
+                                    <MudGrid Justify="Justify.Center">
+                                        <MudItem Style="margin-top:15px" Xs="12" Sm="12" Md="8" Lg="8" Xl="8">
+
+                                            <MudAutocomplete T="Catalog"
+                                                             SearchFunc="@SearchYears" AdornmentIcon="@Icons.Material.Filled.Search" Label="Todos los años"
+                                                             Variant="Variant.Outlined"
+                                                             AdornmentColor="Color.Secondary"
+                                                             ValueChanged="@((e)=>YearChange(e.parameterId))"
+                                                             ToStringFunc="@(e=> e==null?null : $"{e.parameterId}")" />
+
+                                        </MudItem>
+
+                                    </MudGrid>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </MudHidden>
+                    <MudHidden Breakpoint="Breakpoint.SmAndDown" Invert="true">
+                        <div class="p-md-5;">
+                            <h2 style="text-align: center;">¿Cuál es la año de tu <b>@Marca</b>?</h2>
+                            @*   <MudGrid Justify="Justify.Center">
+
+                                @if (Years.Count() > 0)
+                                {
+                                    var count = 1;
+                                    foreach (var item in Years)
+                                    {
+                                        if (count <= 10)
+                                        {
+                                            <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
+                                                <MudButton OnClick="@(() => YearChange(item.parameterId))">
+                                                    <MudPaper Width="150px">
+
+                                                        <MudCard>
+                                                            <MudCardContent>
+                                                                <MudText Align="Align.Center" Style="font-size:14px">@item.parameterId</MudText>
+
+                                                            </MudCardContent>
+
+                                                        </MudCard>
+
+                                                    </MudPaper>
+                                                </MudButton>
+                                            </MudItem>
+
+                                        }
+
+                                        count++;
+                                    }
+
+                                }
+
+                            </MudGrid>
+ *@
+                            <div class="row p-5">
+                                <MudGrid Justify="Justify.Center">
+                                    <MudItem Style="margin-top:15px" Xs="12" Sm="12" Md="8" Lg="8" Xl="8">
+                                        <MudAutocomplete T="Catalog"
+                                                         SearchFunc="@SearchYears" AdornmentIcon="@Icons.Material.Filled.Search" Label="Todos las años"
+                                                         Variant="Variant.Outlined"
+                                                         AdornmentColor="Color.Secondary"
+                                                         ValueChanged="@((e)=>YearChange(e.parameterId))"
+                                                         ToStringFunc="@(e=> e==null?null : $"{e.parameterId}")" />
+
+                                    </MudItem>
+
+                                </MudGrid>
+
+
+
+
+                            </div>
+                        </div>
+
+                    </MudHidden>
+
+                </MudStep>
+                <MudStep Title="Equipo de Gas">
+                    <MudHidden Breakpoint="Breakpoint.MdAndUp" Invert="true">
+                        <div class="row" style="text-align:center;justify-content:center">
+                            <div class="p-md-5" style="width:100%; text-align:center;">
+                                <h2>¿Cuál es el equipo de gas de tu <b>@Marca</b>?</h2>
+
+                                <MudGrid Justify="Justify.Center">
+
+                                    @if (EquiposGas.Count() > 0)
+                                    {
+                                        foreach (var item in EquiposGas)
+                                        {
+                                            <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
+                                                <MudButton OnClick="@(() => EquipoGasChange(item.parameterId))">
+                                                    <MudPaper Width="250px" Elevation="0">
+
+                                                        <MudCard>
+                                                            <MudCardContent>
+                                                                <MudText Align="Align.Center">@item.parameterName</MudText>
+
+                                                            </MudCardContent>
+
+                                                        </MudCard>
+
+                                                    </MudPaper>
+                                                </MudButton>
+                                            </MudItem>
+                                        }
+
+                                    }
+
+                                </MudGrid>
+
+                                @*         <div class="row p-5">
+                                    <MudGrid Justify="Justify.Center">
+                                        <MudItem Style="margin-top:15px" Xs="12" Sm="12" Md="8" Lg="8" Xl="8">
+
+                                            <MudAutocomplete T="Marcas"
+                                                             SearchFunc="@Search" AdornmentIcon="@Icons.Material.Filled.Search" Label="Todas las marcas"
+                                                             Variant="Variant.Outlined"
+                                                             AdornmentColor="Color.Secondary"
+                                                             ValueChanged="@((e)=>MarcaChange(e.parameterId))"
+                                                             ToStringFunc="@(e=> e==null?null : $"{e.parameterName}")" />
+
+                                        </MudItem>
+
+                                    </MudGrid>
+
+                                </div> *@
+                            </div>
+                        </div>
+
+
+                    </MudHidden>
+
+                    <MudHidden Breakpoint="Breakpoint.SmAndDown" Invert="true">
+                        <div class="p-md-5;">
+                            <h2 style="text-align: center;">¿Cuál es el equipo de gas de tu <b>@Marca</b>?</h2>
+                            <MudGrid Justify="Justify.Center">
+
+                                @if (EquiposGas.Count() > 0)
+                                {
+                                    foreach (var item in EquiposGas)
+                                    {
+                                        <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
+                                            <MudButton OnClick="@(() => EquipoGasChange(item.parameterId))">
+                                                <MudPaper Width="150px">
+                                                    <MudCard>
+                                                        <MudCardContent>
+                                                            <MudText Align="Align.Center" Style="font-size:14px">@item.parameterName</MudText>
+
+                                                        </MudCardContent>
+
+                                                    </MudCard>
+                                                </MudPaper>
+                                            </MudButton>
+                                        </MudItem>
+                                    }
+
+                                }
+
+                            </MudGrid>
+
+                            @*       <div class="row p-5">
+                                <MudGrid Justify="Justify.Center">
+                                    <MudItem Style="margin-top:15px" Xs="12" Sm="12" Md="8" Lg="8" Xl="8">
+                                        <MudAutocomplete T="Catalog"
+                                                         SearchFunc="@Search" AdornmentIcon="@Icons.Material.Filled.Search" Label="Todas las marcas"
+                                                         Variant="Variant.Outlined"
+                                                         AdornmentColor="Color.Secondary"
+                                                         ValueChanged="@((e)=>EquipoGasChange(e.parameterId))"
+                                                         ToStringFunc="@(e=> e==null?null : $"{e.parameterName}")" />
+
+                                    </MudItem>
+
+                                </MudGrid>
+
+
+
+
+                            </div> *@
+                        </div>
+
+                    </MudHidden>
+
+
+                </MudStep>
+
+                <MudStep Title="Uso del vehículo">
+                    <MudHidden Breakpoint="Breakpoint.MdAndUp" Invert="true">
+                        <div class="row" style="text-align:center;justify-content:center">
+                            <div class="p-md-5" style="width:100%; text-align:center;">
+                                <h2>¿Cuál es el uso de tu <b>@Marca</b>?</h2>
+
+                                <MudGrid Justify="Justify.Center">
+
+                                    @if (Usos.Count() > 0)
+                                    {
+                                        var count = 1;
+                                        foreach (var item in Usos)
+                                        {
+                                            if (count <= 10)
+                                            {
+                                                <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
+                                                    <MudButton OnClick="@(() => UsoChange(item.parameterId))">
+                                                        <MudPaper Width="250px" Elevation="0">
+
+                                                            <MudCard>
+                                                                <MudCardContent>
+                                                                    <MudText Align="Align.Center">@item.parameterName</MudText>
+
+                                                                </MudCardContent>
+
+                                                            </MudCard>
+
+                                                        </MudPaper>
+                                                    </MudButton>
+                                                </MudItem>
+                                            }
+                                            count++;
+
+                                        }
+
+                                    }
+
+                                </MudGrid>
+
+                                <div class="row p-5">
+                                    <MudGrid Justify="Justify.Center">
+                                        <MudItem Style="margin-top:15px" Xs="12" Sm="12" Md="8" Lg="8" Xl="8">
+
+                                            <MudAutocomplete T="Catalog"
+                                                             SearchFunc="@SearchUsos" AdornmentIcon="@Icons.Material.Filled.Search" Label="Todos los usos"
+                                                             Variant="Variant.Outlined"
+                                                             AdornmentColor="Color.Secondary"
+                                                             ValueChanged="@((e)=>UsoChange(e.parameterId))"
+                                                             ToStringFunc="@(e=> e==null?null : $"{e.parameterName}")" />
+
+                                        </MudItem>
+
+                                    </MudGrid>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </MudHidden>
+                    <MudHidden Breakpoint="Breakpoint.SmAndDown" Invert="true">
+                        <div class="p-md-5;">
+                            <h2 style="text-align: center;">¿Cuál es el uso de tu <b>@Marca</b>?</h2>
+                            <MudGrid Justify="Justify.Center">
+
+                                @if (Usos.Count() > 0)
+                                {
+                                    var count = 1;
+                                    foreach (var item in Usos)
+                                    {
+                                        if (count <= 10)
+                                        {
+                                            <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
+                                                <MudButton OnClick="@(() => UsoChange(item.parameterId))">
+                                                    <MudPaper Width="150px">
+                                                        <MudCard>
+                                                            <MudCardContent>
+                                                                <MudText Align="Align.Center" Style="font-size:14px">@item.parameterName</MudText>
+
+                                                            </MudCardContent>
+
+                                                        </MudCard>
+                                                    </MudPaper>
+                                                </MudButton>
+                                            </MudItem>
+                                        }
+                                        count++;
+                                    }
+
+                                }
+
+                            </MudGrid>
+
+                            <div class="row p-5">
+                                <MudGrid Justify="Justify.Center">
+                                    <MudItem Style="margin-top:15px" Xs="12" Sm="12" Md="8" Lg="8" Xl="8">
+                                        <MudAutocomplete T="Catalog"
+                                                         SearchFunc="@SearchUsos" AdornmentIcon="@Icons.Material.Filled.Search" Label="Todos los usos"
+                                                         Variant="Variant.Outlined"
+                                                         AdornmentColor="Color.Secondary"
+                                                         ValueChanged="@((e)=>UsoChange(e.parameterId))"
+                                                         ToStringFunc="@(e=> e==null?null : $"{e.parameterName}")" />
+
+                                    </MudItem>
+
+                                </MudGrid>
+
+
+
+
+                            </div>
+                        </div>
+
+                    </MudHidden>
+                </MudStep>
+
+                <MudStep Title="zona de circulación">
+                    <MudHidden Breakpoint="Breakpoint.MdAndUp" Invert="true">
+                        <div class="row" style="text-align:center;justify-content:center">
+                            <div class="p-md-5" style="width:100%; text-align:center;">
+                                <h2>¿Cuál es la zona de circulación de tu <b>@Marca</b>?</h2>
+
+                                <MudGrid Justify="Justify.Center">
+
+                                    @if (ZonasCirgulacion.Count() > 0)
+                                    {
+                                        var count = 1;
+                                        foreach (var item in ZonasCirgulacion)
+                                        {
+                                            if (count <= 10)
+                                            {
+                                                <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
+                                                    <MudButton OnClick="@(() => ZonaCirculacionChange(item.parameterId))">
+                                                        <MudPaper Width="250px" Elevation="0">
+
+                                                            <MudCard>
+                                                                <MudCardContent>
+                                                                    <MudText Align="Align.Center">@item.parameterName</MudText>
+
+                                                                </MudCardContent>
+
+                                                            </MudCard>
+
+                                                        </MudPaper>
+                                                    </MudButton>
+                                                </MudItem>
+                                            }
+                                            count++;
+
+                                        }
+
+                                    }
+
+                                </MudGrid>
+
+                                <div class="row p-5">
+                                    <MudGrid Justify="Justify.Center">
+                                        <MudItem Style="margin-top:15px" Xs="12" Sm="12" Md="8" Lg="8" Xl="8">
+
+                                            <MudAutocomplete T="Catalog"
+                                                             SearchFunc="@SearchZona" AdornmentIcon="@Icons.Material.Filled.Search" Label="Todas las zonas de circulación"
+                                                             Variant="Variant.Outlined"
+                                                             AdornmentColor="Color.Secondary"
+                                                             ValueChanged="@((e)=>ZonaCirculacionChange(e.parameterId))"
+                                                             ToStringFunc="@(e=> e==null?null : $"{e.parameterName}")" />
+
+                                        </MudItem>
+
+                                    </MudGrid>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </MudHidden>
+                    <MudHidden Breakpoint="Breakpoint.SmAndDown" Invert="true">
+                        <div class="p-md-5;">
+                            <h2 style="text-align: center;">¿Cuál es la zona de circulación de tu <b>@Marca</b>?</h2>
+                            <MudGrid Justify="Justify.Center">
+
+                                @if (ZonasCirgulacion.Count() > 0)
+                                {
+                                    var count = 1;
+                                    foreach (var item in ZonasCirgulacion)
+                                    {
+                                        if (count <= 10)
+                                        {
+                                            <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
+                                                <MudButton OnClick="@(() => ZonaCirculacionChange(item.parameterId))">
+                                                    <MudPaper Width="150px">
+                                                        <MudCard>
+                                                            <MudCardContent>
+                                                                <MudText Align="Align.Center" Style="font-size:14px">@item.parameterName</MudText>
+
+                                                            </MudCardContent>
+
+                                                        </MudCard>
+                                                    </MudPaper>
+                                                </MudButton>
+                                            </MudItem>
+                                        }
+                                        count++;
+                                    }
+
+                                }
+
+                            </MudGrid>
+
+                            <div class="row p-5">
+                                <MudGrid Justify="Justify.Center">
+                                    <MudItem Style="margin-top:15px" Xs="12" Sm="12" Md="8" Lg="8" Xl="8">
+                                        <MudAutocomplete T="Catalog"
+                                                         SearchFunc="@SearchZona" AdornmentIcon="@Icons.Material.Filled.Search" Label="Todas las zonas de circulación"
+                                                         Variant="Variant.Outlined"
+                                                         AdornmentColor="Color.Secondary"
+                                                         ValueChanged="@((e)=>ZonaCirculacionChange(e.parameterId))"
+                                                         ToStringFunc="@(e=> e==null?null : $"{e.parameterName}")" />
+
+                                    </MudItem>
+
+                                </MudGrid>
+
+
+
+
+                            </div>
+                        </div>
+
+                    </MudHidden>
+                </MudStep>
+
+                <MudStep Title="valor del vehículo">
+
+                    <div class="row" style="text-align:center;justify-content:center">
+                        <div class="p-md-5" style="width:700px; text-align:center;">
+                            <h2><b>El valor de tu vehículo es: </b></h2>
+                            <h2>RD$ <b>@value.ToString("C") </b></h2>
+                            <table style="width:100%">
+                                <tr>
+                                    <td colspan="3">
+                                        <MudSlider ValueLabel="true" T="double" ValueLabelFormat="@("C")" Culture="System.Globalization.CultureInfo.CurrentCulture" Value="@value" ValueChanged="onSlideChange" Min="minimo"
+                                                   Max="@maximo"
+                                                   Step="1000"
+                                                   Color="Color.Secondary"
+                                                   Size="Size.Large"
+                                                   Style="width: 100%;" Variant="Variant.Filled"></MudSlider>
+
+
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td style="text-align: start">
+                                        Valor mínimo RD$ <b>@minimo.ToString("C") </b>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td style="text-align: end">
+                                        Valor máximo RD$ <b>@maximo.ToString("C") </b>
+                                    </td>
+                                </tr>
+                                <tr style="height: 100px;">
+                                    <td colspan="3">
+                                        <b style="text-align:center">
+                                            Si no estás de acuerdo con el valor estimado o los rangos propuestos,
+                                            puedes introducir el valor deseado en el siguiente campo:
+                                        </b>
+                                    </td>
+                                </tr>
+
+                                <tr style="height: 100px;">
+                                    <td colspan="3" style="text-align:center">
+                                        <MudNumericField Variant="Variant.Outlined" Style="text-align:center; " Format="C" Culture="System.Globalization.CultureInfo.CurrentCulture" Step="1000" @bind-Value="valueSugerido" Max="@maximo" Min="@minimo"></MudNumericField>
+                                    </td>
+                                </tr>
+
+                                <tr style="height: 100px;">
+                                    <td colspan="3" style="text-align:center">
+                                        <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="NextStep">Continuar</MudButton>
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+                    </div>
+
+                </MudStep>
+                <MudStep Title="Datos Personales">
+
+                    <div class="row" style="text-align:center;justify-content:center">
+                        <div class="p-md-5" style="width:700px; text-align:center;">
+                            <h2>¡Ya casi hemos terminado!</h2>
+                            <h2>Por favor, llena tus datos de contacto para conocer tu Precio:</h2>
+
+
+                            <MudCard>
+                                <MudForm Model="@model">
+                                    <MudCardContent>
+                                        <MudSelect Label="Tipo" T="string" Variant="Variant.Outlined" @bind-Value="model.Owner.identityDocumentTypeCode">
+                                            <MudSelectItem T="string" Value="@("CED")">
+                                                CEDULA
+                                            </MudSelectItem>
+
+                                            <MudSelectItem T="string" Value="@("PAS")">
+                                                PASAPORTE
+                                            </MudSelectItem>
+
+
+                                        </MudSelect>
+                                        @if (model.Owner.identityDocumentTypeCode == "CED")
+                                        {
+                                            <MudTextField Variant="Variant.Outlined" Mask="@(new PatternMask("000-0000000-0"))" Required @bind-Value="model.Owner.identityDocumentNumber"
+                                                          For="@(() => model.Owner.identityDocumentNumber)"
+                                                          Immediate="true"
+                                                          Label="No. Identificacion" />
+                                        }
+                                        else
+                                        {
+                                            <MudTextField Variant="Variant.Outlined" OnBlur="BuscarNombre" Required @bind-Value="model.Owner.identityDocumentNumber"
+                                                          For="@(() => model.Owner.identityDocumentNumber)"
+                                                          Immediate="true"
+                                                          Label="No. Identificacion" />
+                                        }
+
+
+                                        <MudTextField @bind-Value="model.Owner.name" Required ReadOnly Variant="Variant.Outlined"
+                                                      For="@(() => model.Owner.name)"
+                                                      Immediate="true"
+                                                      Label="Nombre y Apellidos" />
+
+                                        <MudTextField @bind-Value="model.Owner.mobile" Variant="Variant.Outlined" Mask="@(new PatternMask("(000)000-0000"))"
+                                                      For="@(() => model.Owner.mobile)"
+                                                      Immediate="true"
+                                                      Label="Celular" />
+
+
+                                    </MudCardContent>
+
+
+                                    <MudCardActions>
+                                        <div style="text-align: center;width: 100%;">
+                                            <MudButton Variant="Variant.Filled" OnClick="Cotizar" Color="Color.Secondary">Querio cotizar</MudButton>
+                                        </div>
+
+                                    </MudCardActions>
+                                </MudForm>
+                            </MudCard>
+
+
+
+                        </div>
+                    </div>
+
+                </MudStep>
+                <MudStep Title="Complete cotizador" @bind-Completed="_completed">
+                    <MudGrid>
+                        <MudItem lg="12" md="12" xs="12">
+                            <h5 class="text-center"> <b style="color:red !important">@model.Owner.name</b>, observa abajo las <b style="color:red !important">ofertas</b> disponibles para tu <b style="color:red !important">@Marca</b>, y elige la más adecuada:</h5>
+                        </MudItem>
+                        @foreach (var cotiza in cotizaciones)
+                        {
+                            <MudItem lg="4" md="4">
+                                <CotizadorCardComponent cotizadorPlanes="cotiza"></CotizadorCardComponent>
+                            </MudItem>
+
+                        }
+                    </MudGrid>
+
+                </MudStep>
+            </ChildContent>
+            <CompletedContent>
+                <MudStack Row Class="ma-3">
+                    <MudGrid>
+                        @foreach (var cotiza in cotizaciones)
+                        {
+                            <MudItem lg="4" md="4">
+                                <CotizadorCardComponent cotizadorPlanes="cotiza"></CotizadorCardComponent>
+                            </MudItem>
+
+                        }
+                    </MudGrid>
+
+                </MudStack>
+            </CompletedContent>
+            <ActionContent Context="stepper">
+                <MudButton OnClick="@(() => stepper.ResetAsync())">Reiniciar</MudButton>
+                @if (!_completed)
+                {
+                    <MudIconButton OnClick="@(() => stepper.PreviousStepAsync())" Icon="@Icons.Material.Filled.ArrowBack" Color="Color.Secondary" Disabled="@(_index <= 0)" />
+                    <MudSpacer />
+                    @if (stepper.Steps[_index].Skippable == true)
+                    {
+                        <MudIconButton OnClick="@(() => stepper.SkipCurrentStepAsync())" Icon="@stepper.SkipButtonIcon" Color="Color.Secondary" />
+                    }
+                    <MudIconButton OnClick="@(() => stepper.NextStepAsync())" Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Secondary" />
+                }
+            </ActionContent>
+        </MudStepper>
+
+    </MudPaper>
+</div>
+
+@code {
+
+    private int _index;
+    private bool _completed;
+    private bool isMobile, loading;
+    public string codigo;
+    private List<Catalog> Marcas = new List<Catalog>();
+    private List<Catalog> TodasMarcas = new List<Catalog>();
+    private List<Catalog> Modelos = new List<Catalog>();
+    private List<Catalog> SubModelos = new List<Catalog>();
+    private List<Catalog> Years = new List<Catalog>();
+    private List<Catalog> EquiposGas = new List<Catalog>();
+    private List<Catalog> Usos = new List<Catalog>();
+    private List<Catalog> ZonasCirgulacion = new List<Catalog>();
+    private Catalog marcaSelected = new Catalog();
+    private AutoTrebolRequest model = new AutoTrebolRequest();
+    double value = 1878000;
+    double valueSugerido;
+    double minimo = 1633000;
+    double maximo = 2100000;
+
+    public string Marca = "";
+    private string TodasMarca = "";
+    private string Modelo = "";
+    private string SubModelo = "";
+    private string Year = "";
+    private string Equipo = "";
+    private string Uso = "";
+    private string Zona = "";
+
+    private List<CotizadorPlanes> cotizaciones = new List<CotizadorPlanes>();
+
+    private List<CuotasPlan> cuotas = new List<CuotasPlan>();
+
+    private async Task onSlideChange(double valor)
+    {
+        value = valor;
+        StateHasChanged();
+        ValuenChange();
+    }
+    private void IdenfificacionChange(string valor)
+    {
+        if (valor != null)
+        {
+            model.Owner.identityDocumentTypeCode = valor;
+        }
+    }
+    private async Task BuscarNombre()
+    {
+        try
+        {
+            if (model.Owner.identityDocumentTypeCode == null || model.Owner.identityDocumentTypeCode == "")
+            {
+                await Swal.FireAsync("Aviso", "Seleccione el tipo de documento", "warning");
+                return;
+            }
+            if (model.Owner.identityDocumentNumber == null || model.Owner.identityDocumentNumber == "")
+            {
+                await Swal.FireAsync("Aviso", "digite su identificación", "warning");
+                return;
+            }
+
+            loading = true;
+
+            var respuestaHttp = await repositorio.Get<IdentificacionDTO>($"api/Cotizador/BuscarNombre/6/{model.Owner.identityDocumentNumber}/{model.Owner.identityDocumentTypeCode}");
+            if (respuestaHttp.Error)
+            {
+                await Swal.FireAsync("Aviso", "No existen datos para esta consulta", "warning");
+                return;
+            }
+
+            var result = respuestaHttp.Response!;
+            model.Owner.name = result.naturalPerson.personName.name + " " + result.naturalPerson.personName.firstSurname + " " + result.naturalPerson.personName.secondSurname; ;
+
+            loading = false;
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+
+    }
+
+    public async Task Cotizar()
+    {
+        if (model.Owner.identityDocumentNumber.Trim() == "" || model.Owner.identityDocumentTypeCode.Trim() == "" || model.Owner.name.Trim() == "" || model.Owner.mobile.Trim() == "")
+        {
+            await Swal.FireAsync("Aviso", "Favor completar todos los campos", "warning");
+            return;
+        }
+        model.Owner.firstSurname = model.Owner.name.Trim();
+        model.Owner.phone = model.Owner.mobile.Trim();
+
+        try
+        {
+            loading = true;
+
+            var respuestaHttp = await repositorio.Post<AutoTrebolRequest, List<CotizadorResponse>>($"api/Cotizador/multipleAutoTrebol", model);
+            if (respuestaHttp.Error)
+            {
+                await Swal.FireAsync("Aviso", "No existen datos para esta consulta", "warning");
+                return;
+            }
+
+            var result = respuestaHttp.Response!;
+            TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+            foreach (var item in result)
+            {
+                var listaCapitalizada = new List<Coverage>();
+                foreach (var i in item.Coverages)
+                {
+                    listaCapitalizada.Add(new Coverage { CoverageDesc = textInfo.ToTitleCase(i.CoverageDesc), CoverageId = i.CoverageId, SumInsuredAmn = i.SumInsuredAmn });
+                }
+                item.Coverages = listaCapitalizada;
+
+            }
+
+            loading = false;
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Marcas.Add(new Catalog { parameterId = "74", logo = "logo_toyota.png", parameterName = "TOYOTA" });
+        Marcas.Add(new Catalog { parameterId = "31", logo = "hyundai.png", parameterName = "HYUNDAI" });
+        Marcas.Add(new Catalog { parameterId = "40", logo = "kia.png", parameterName = "KIA" });
+        Marcas.Add(new Catalog { parameterId = "30", logo = "honda.png", parameterName = "HONDA" });
+        Marcas.Add(new Catalog { parameterId = "26", logo = "ford.png", parameterName = "FORD" });
+        Marcas.Add(new Catalog { parameterId = "56", logo = "nissan.png", parameterName = "NISSAN" });
+        // Marcas.Add(new Catalogs { codigo = "13", logo = "nissan.png", descripcion = "LAND GRUISER PRADO" });
+        Marcas.Add(new Catalog { parameterId = "13", logo = "chevrolet.png", parameterName = "CHEVROLET" });
+        // Marcas.Add(new Catalog { parameterId = "14", logo = "jeep.png", parameterName = "JEEP" });
+        cuotas.Add(new CuotasPlan { descripcion = "1 cuota", valor = 1 });
+        cuotas.Add(new CuotasPlan { descripcion = "2 cuota2", valor = 2 });
+        cuotas.Add(new CuotasPlan { descripcion = "3 cuota3", valor = 3 });
+        cuotas.Add(new CuotasPlan { descripcion = "4 cuota4", valor = 4 });
+        cuotas.Add(new CuotasPlan { descripcion = "5 cuota5", valor = 5 });
+        cuotas.Add(new CuotasPlan { descripcion = "6 cuota6", valor = 6 });
+        valueSugerido = value;
+        var coverages = new List<Coverage>
+{
+    new() { CoverageId = "3005", CoverageDesc = "EXCLUIDA", SumInsuredAmn = "4000" },
+    new() { CoverageId = "3006", CoverageDesc = "DANOS A PROPIEDAD AJENA", SumInsuredAmn = "500000" },
+    new() { CoverageId = "3007", CoverageDesc = "DANOS A UN TERCERO", SumInsuredAmn = "500000" },
+    new() { CoverageId = "3008", CoverageDesc = "DANOS A MAS DE TERCERO", SumInsuredAmn = "1000000" },
+    new() { CoverageId = "3009", CoverageDesc = "DANOS A UN PASAJERO", SumInsuredAmn = "500000" },
+    new() { CoverageId = "3010", CoverageDesc = "DANOS A MAS DE UN PASAJERO", SumInsuredAmn = "1000000" },
+    new() { CoverageId = "3011", CoverageDesc = "ACCIDENTES DEL CONDUCTOR", SumInsuredAmn = "50000" },
+    new() { CoverageId = "3012", CoverageDesc = "INVALIDEZ PERMANENTE CONDUCTOR", SumInsuredAmn = "50000" },
+    new() { CoverageId = "3013", CoverageDesc = "GASTOS MEDICOS CONDUCTOR", SumInsuredAmn = "5000" },
+    new() { CoverageId = "3015", CoverageDesc = "ASISTENCIA EN VIAJES", SumInsuredAmn = "0" },
+    new() { CoverageId = "3016", CoverageDesc = "DEFENSA JURIDICA", SumInsuredAmn = "0" },
+    new() { CoverageId = "3021", CoverageDesc = "PERD. TOTAL POR ROBO O HURTO", SumInsuredAmn = "1129000" },
+    new() { CoverageId = "3023", CoverageDesc = "PERD. TOTAL POR DANOS", SumInsuredAmn = "1129000" },
+    new() { CoverageId = "3025", CoverageDesc = "PERD. PARCIAL POR ROBO O HURTO", SumInsuredAmn = "1129000" },
+    new() { CoverageId = "3027", CoverageDesc = "R. C. EXCESO AUTO", SumInsuredAmn = "200000" },
+    new() { CoverageId = "3028", CoverageDesc = "PERDIDA PARCIAL POR DANOS", SumInsuredAmn = "1129000" },
+    new() { CoverageId = "3029", CoverageDesc = "RIESGOS COMPRENSIVOS", SumInsuredAmn = "1129000" },
+    new() { CoverageId = "3031", CoverageDesc = "FIANZA JUDICIAL", SumInsuredAmn = "1000000" },
+    new() { CoverageId = "3033", CoverageDesc = "SERVICIO AL AUTOMOVILISTA-CAA", SumInsuredAmn = "0" },
+    new() { CoverageId = "3034", CoverageDesc = "PLAN RENTA O GASTOS TRANSPORTE", SumInsuredAmn = "0" },
+    new() { CoverageId = "3035", CoverageDesc = "PERDIDA POR ROTURA DE VIDRIOS", SumInsuredAmn = "0" },
+    new() { CoverageId = "3043", CoverageDesc = "VISUALMAX", SumInsuredAmn = "0" }
+};
+        foreach (var item in coverages)
+        {
+            TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+
+            item.CoverageDesc = textInfo.ToTitleCase(item.CoverageDesc.ToLower().Replace("danos", "Daños"));
+            if (item.SumInsuredAmn == "0")
+            {
+                item.SumInsuredAmn = "Amparada";
+            }
+            else
+            {
+                item.SumInsuredAmn = Convert.ToDecimal(item.SumInsuredAmn).ToString("C0");
+            }
+
+
+
+
+        }
+
+
+        cotizaciones.Add(new CotizadorPlanes
+        {
+            IdCotizacion = "6253401234031",
+            NombrePlan = "TREBOL CLASICO",
+            PrecioPlan = 47521,
+            Cuotas = cuotas,
+            Deducible = "1% del valor asegurado",
+            AutoRentado = "Hasta 10 días",
+            ResponsbilidadCivil = "500/500/1,000",
+            AccidentesConductor = "50,000",
+            FianzaJudicial = "1,000,000",
+            CentroAcistenciaAutomovilista = "Amparada",
+            AsistenciaMAPFREBHD = "Amparada",
+            Depreciacion = "2% Mensual",
+            DañosPorPavimento = "Amparada",
+            DañosPorAgua = "Amparada",
+            RobosPartesExternas = "Amparada",
+            Coverages = coverages
+
+        });
+        cotizaciones.Add(new CotizadorPlanes
+        {
+            IdCotizacion = "6253401234032",
+            NombrePlan = "TREBOL PLUS",
+            PrecioPlan = 47521,
+            Cuotas = cuotas,
+            Deducible = "1% del valor asegurado",
+            AutoRentado = "Hasta 10 días",
+            ResponsbilidadCivil = "500/500/1,000",
+            AccidentesConductor = "50,000",
+            FianzaJudicial = "1,000,000",
+            CentroAcistenciaAutomovilista = "Amparada",
+            AsistenciaMAPFREBHD = "Amparada",
+            Depreciacion = "2% Mensual",
+            DañosPorPavimento = "Amparada",
+            DañosPorAgua = "Amparada",
+            RobosPartesExternas = "Amparada",
+            Coverages = coverages
+        });
+        cotizaciones.Add(new CotizadorPlanes
+        {
+            IdCotizacion = "6253401234031",
+            NombrePlan = "TREBOL PLUS + 1/1/2",
+            PrecioPlan = 47521,
+            Cuotas = cuotas,
+            Deducible = "1% del valor asegurado",
+            AutoRentado = "Hasta 10 días",
+            ResponsbilidadCivil = "500/500/1,000",
+            AccidentesConductor = "50,000",
+            FianzaJudicial = "1,000,000",
+            CentroAcistenciaAutomovilista = "Amparada",
+            AsistenciaMAPFREBHD = "Amparada",
+            Depreciacion = "2% Mensual",
+            DañosPorPavimento = "Amparada",
+            DañosPorAgua = "Amparada",
+            RobosPartesExternas = "Amparada",
+            Coverages = coverages
+        });
+        var resultadoHttp = await repositorio.Get<List<Catalog>>("api/Cotizador/vehicleBrands/6/1");
+        var equipoResponse = await repositorio.Get<List<Catalog>>("api/Cotizador/gasEquipements");
+        var usoResponse = await repositorio.Get<List<Catalog>>("api/Cotizador/vehicleUses/6");
+        var zonaResponse = await repositorio.Get<List<Catalog>>("api/Cotizador/drivingZones");
+
+        if (resultadoHttp.Error)
+        {
+            var error = await resultadoHttp.ObtenerError();
+
+            StateHasChanged();
+            return;
+        }
+
+        TodasMarcas = resultadoHttp.Response;
+        EquiposGas = equipoResponse.Response;
+        Usos = usoResponse.Response;
+        ZonasCirgulacion = zonaResponse.Response;
+
+
+
+
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+
+            isMobile = await JSRuntime.InvokeAsync<bool>("isMobile");
+
+            StateHasChanged();
+        }
+    }
+
+    private async void MarcaChange(string id)
+    {
+        var valor = id;
+        model.VariableData.vehicleBrandCode = Convert.ToInt32(id);
+        loading = true;
+
+        var respuestaHttp = await repositorio.Get<List<Catalog>>($"api/Cotizador/vehicleModels/6/{id}");
+        if (respuestaHttp.Error)
+        {
+            await Swal.FireAsync("Aviso", "No existen modelos para esta marca", "warning");
+            return;
+        }
+
+        Modelos = respuestaHttp.Response!;
+        loading = false;
+        try
+        {
+            var m = TodasMarcas.Where(e => e.parameterId == id).First();
+            Marca = m.parameterName;
+        }
+        catch (Exception e)
+        {
+
+            throw;
+        }
+
+        await NextStep();
+        StateHasChanged();
+
+    }
+
+    private async void ModeloChange(string id)
+    {
+
+        model.VariableData.vehicleModelCode = Convert.ToInt32(id);
+        loading = true;
+
+        var respuestaHttp = await repositorio.Get<List<Catalog>>($"api/Cotizador/vehicleSubModels/6/{model.VariableData.vehicleBrandCode}/{id}");
+        if (respuestaHttp.Error)
+        {
+            await Swal.FireAsync("Aviso", "No existen submodelos para este modelo", "warning");
+        }
+
+        SubModelos = respuestaHttp.Response!;
+        loading = false;
+
+        var m = Modelos.Where(e => e.parameterId == id).First();
+        Marca += " " + m.parameterName;
+        await NextStep();
+        StateHasChanged();
+    }
+    private async void SubModeloChange(string id)
+    {
+
+        model.VariableData.vehicleSubModelCode = Convert.ToInt32(id);
+        loading = true;
+
+        var respuestaHttp = await repositorio.Get<List<Catalog>>($"api/Cotizador/vehicleSubModelYears/{model.VariableData.vehicleBrandCode}/{model.VariableData.vehicleModelCode}/{id}");
+        if (respuestaHttp.Error)
+        {
+            await Swal.FireAsync("Aviso", "No existen años para este submodelo", "warning");
+            return;
+        }
+
+        Years = respuestaHttp.Response!;
+
+        loading = false;
+        var m = SubModelos.Where(e => e.parameterId == id).First();
+        SubModelo = m.parameterName;
+        Marca += " " + m.parameterName;
+        await NextStep();
+        StateHasChanged();
+    }
+
+    private async void YearChange(string id)
+    {
+        try
+        {
+            var anio = Convert.ToInt32(id);
+            model.VariableData.vehicleSubModelYearNum = anio;
+            Marca += " " + id;
+            var requesprecios = new InsurabilityScaleRequest
+            {
+                vehicleBrandCode = model.VariableData.vehicleBrandCode,
+                vehicleModelCode = model.VariableData.vehicleModelCode,
+                vehicleSubModelCode = model.VariableData.vehicleSubModelCode,
+                vehicleSubModelYearNum = model.VariableData.vehicleSubModelYearNum,
+            };
+
+            loading = true;
+
+            var respuestaHttp = await repositorio.Post<InsurabilityScaleRequest, List<VehiclePrices>>($"api/Cotizador/SeachInsurabilityScale", requesprecios);
+            if (respuestaHttp.Error)
+            {
+                await Swal.FireAsync("Aviso", "No existen datos para esta consulta", "warning");
+                return;
+            }
+
+            var result = respuestaHttp.Response!;
+
+            foreach (var item in result)
+            {
+                if (item.vehicleSubModelYearNum == anio)
+                {
+                    maximo = Convert.ToDouble(item.vehicleSubModelMaxValue);
+                    minimo = Convert.ToDouble(item.vehicleSubModelMinValue);
+                    value = Convert.ToDouble(item.vehicleSubModelValue);
+                    valueSugerido = value;
+                }
+            }
+
+            loading = false;
+
+
+            await NextStep();
+
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+
+            throw;
+        }
+
+    }
+
+    private async void EquipoGasChange(string id)
+    {
+
+        model.VariableData.gasEquipment = Convert.ToInt32(id);
+        await NextStep();
+
+        StateHasChanged();
+    }
+    private async void UsoChange(string id)
+    {
+
+        model.VariableData.vehicleUseCode = Convert.ToInt32(id);
+        await NextStep();
+
+        StateHasChanged();
+    }
+    private async void ZonaCirculacionChange(string id)
+    {
+
+        model.VariableData.drivingZone = Convert.ToInt32(id);
+        await NextStep();
+
+        StateHasChanged();
+    }
+    private async void ValuenChange()
+    {
+        var valor = value;
+        if (valueSugerido > maximo)
+        {
+            valor = maximo;
+        }
+        valueSugerido = Convert.ToDouble(valor);
+        model.VariableData.vehicleValue = Convert.ToDecimal(valor);
+        // await NextStep();
+
+        StateHasChanged();
+    }
+
+    private async Task<IEnumerable<Catalog>> Search(string value, CancellationToken token)
+    {
+        if (string.IsNullOrEmpty(value))
+        {
+            return TodasMarcas;
+        }
+
+        return TodasMarcas.Where(x => x.parameterName.Contains(value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+
+    }
+    private async Task<IEnumerable<Catalog>> SearchModel(string value, CancellationToken token)
+    {
+        if (string.IsNullOrEmpty(value))
+        {
+            return Modelos;
+        }
+
+        return Modelos.Where(x => x.parameterName.Contains(value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+
+    }
+
+    private async Task<IEnumerable<Catalog>> SearchYears(string value, CancellationToken token)
+    {
+        if (string.IsNullOrEmpty(value))
+        {
+            return Years;
+        }
+
+        return Years.Where(x => x.parameterId.Contains(value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+
+    }
+
+    private async Task<IEnumerable<Catalog>> SearchEquipoGas(string value, CancellationToken token)
+    {
+        if (string.IsNullOrEmpty(value))
+        {
+            return EquiposGas;
+        }
+
+        return EquiposGas.Where(x => x.parameterName.Contains(value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+
+    }
+    private async Task<IEnumerable<Catalog>> SearchUsos(string value, CancellationToken token)
+    {
+        if (string.IsNullOrEmpty(value))
+        {
+            return Usos;
+        }
+
+        return Usos.Where(x => x.parameterName.Contains(value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+
+    }
+
+
+    private async Task<IEnumerable<Catalog>> SearchZona(string value, CancellationToken token)
+    {
+        if (string.IsNullOrEmpty(value))
+        {
+            return ZonasCirgulacion;
+        }
+
+        return ZonasCirgulacion.Where(x => x.parameterName.Contains(value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+
+    }
+    private async Task<IEnumerable<Catalog>> SearchSubModelo(string value, CancellationToken token)
+    {
+        if (string.IsNullOrEmpty(value))
+        {
+            return SubModelos;
+        }
+
+        return SubModelos.Where(x => x.parameterName.Contains(value, StringComparison.InvariantCultureIgnoreCase)).ToList();
+
+    }
+
+
+
+
+
+    private async Task NextStep()
+    {
+        //  if (_index < 30) Número de pasos - 1
+        _index++;
+        _completed = (_index == 9) ? true : false;
+        if (_completed)
+        {
+            await JSRuntime.InvokeVoidAsync("launchConfetti");
+        }
+    }
+
+    private void PreviousStep()
+    {
+        if (_index > 0)
+            _index--;
+    }
+
+    private void Reset()
+    {
+
+        _index = 0;
+        _completed = false;
+        Marca = "";
+    }
+
+
+}

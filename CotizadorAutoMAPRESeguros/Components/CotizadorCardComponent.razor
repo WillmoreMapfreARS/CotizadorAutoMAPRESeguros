@@ -1,0 +1,166 @@
+﻿@using MudBlazor
+<style>
+    .mud-card-header {
+        background-color: red !important;
+        height: 50px !important;
+    }
+
+    tr {
+        height: 30px !important;
+    }
+</style>
+<MudCard Elevation="5">
+
+    <MudCardHeader Style="@((esVisible  ? "visibility: visible;" : "visibility: hidden;"))">
+            
+
+        <CardHeaderContent>
+              <MudText Typo="Typo.body1" Style="color:white !important">OPCION MAS CONTRATADA</MudText>
+
+            
+
+
+        </CardHeaderContent>
+        <CardHeaderActions>
+           
+                <MudIconButton Icon="@Icons.Material.Filled.Star" Color="Color.Primary" Style="margin-top:-8px" />
+            
+
+        </CardHeaderActions>
+
+    </MudCardHeader>
+        
+    
+ 
+
+
+
+    <MudCardContent Style="text-align:start">
+        <MudText Align="Align.Center" Typo="Typo.h6">@cotizadorPlanes.NombrePlan</MudText>
+        <MudText Align="Align.Center" Typo="Typo.body2">Primer pago</MudText>
+
+        <MudText Align="Align.Center" Typo="Typo.h6"><b>RD @cotizadorPlanes.PrecioPlan.ToString("C")</b></MudText>
+
+        <MudText Typo="Typo.body2"><b>Forma de pago</b></MudText>
+        <MudSelect Align="Align.Center" T="int" Value="cuotaSelected" ValueChanged="onCuotaChanged" Variant="Variant.Outlined" Style="margin-bottom:10px">
+
+            @foreach (var item in cotizadorPlanes.Cuotas)
+            {
+                <MudSelectItem Value="item.valor">@item.descripcion</MudSelectItem>
+            }
+        </MudSelect>
+        <MudButton Color="Color.Secondary" Style="width:100%; text-align:center; margin-bottom:10px" Variant="Variant.Filled"><b>LLAMAME</b></MudButton>
+
+        <MudText Align="Align.Center" Style="margin-bottom:10px" Typo="Typo.body2">Este es el número de tu cotización:<br /><b>@cotizadorPlanes.IdCotizacion</b></MudText>
+        <MudContainer Style="background-color:red; margin-bottom:10px">
+            <MudPaper Width="100%" Elevation=0 Style="background-color:transparent; border:none">
+                <MudText  Typo="Typo.body1" Align="Align.Center" style="color:white !important"><b>COBERTURAS INCLUIDAS</b></MudText>
+            </MudPaper>
+        </MudContainer>
+
+        <table>
+            <tr>
+                <td>  <b style=" color: #6B6B6B !important;">Deducible:</b><MudIcon Title="Min. RD$ 5,000" Icon="@Icons.Material.Filled.Info" Color="Color.Secondary"></MudIcon></td>
+
+                <td colspan="2" style="text-align: end;width:250px;">
+                    @cotizadorPlanes.Deducible
+                </td>
+                <td></td>
+            </tr>
+            @foreach (var item in cotizadorPlanes.Coverages)
+            {
+                <tr>
+                    <td>  <b style=" color: #6B6B6B !important;">@item.CoverageDesc:</b></td>
+                    <td style="text-align: end;">
+                        @item.SumInsuredAmn
+                    </td>
+                </tr>
+            }
+
+         @*    <tr>
+                <td>  <b style=" color: #6B6B6B !important;">Auto rentado:</b></td>
+                <td style="text-align: end;">
+                    @cotizadorPlanes.AutoRentado
+                </td>
+            </tr>
+
+            <tr>
+                <td>  <b style=" color: #6B6B6B !important;">Responsabilidad civil:</b></td>
+                <td style="text-align: end;">
+                    @cotizadorPlanes.ResponsbilidadCivil
+                </td>
+            </tr>
+            <tr>
+                <td>  <b style=" color: #6B6B6B !important;">Accidentes conductor:</b></td>
+                <td style="text-align: end;">
+                    RD$@cotizadorPlanes.AccidentesConductor
+                </td>
+            </tr>
+            <tr>
+                <td>  <b style=" color: #6B6B6B !important;">Fianza judicial:</b></td>
+                <td style="text-align: end;">
+                    RD$@cotizadorPlanes.FianzaJudicial
+                </td>
+            </tr>
+            <tr>
+                <td>  <b style=" color: #6B6B6B !important;">Centro Asistencial al Automovilista:</b></td>
+                <td style="text-align: end;">
+                    @cotizadorPlanes.CentroAcistenciaAutomovilista
+                </td>
+            </tr>
+            <tr>
+                <td>  <b style=" color: #6B6B6B !important;">Asistencia MAPFRE BHD:</b></td>
+                <td style="text-align: end;">
+                    @cotizadorPlanes.AsistenciaMAPFREBHD
+                </td>
+            </tr>
+            <tr>
+                <td>  <b style=" color: #6B6B6B !important;">Depreciación:</b></td>
+                <td style="text-align: end;">
+                    @cotizadorPlanes.Depreciacion
+                </td>
+            </tr>
+            <tr>
+                <td>  <b style=" color: #6B6B6B !important;">Daños por pavimento irregular:</b></td>
+                <td style="text-align: end;">
+                    @cotizadorPlanes.DañosPorPavimento
+                </td>
+            </tr>
+            <tr>
+                <td>  <b style=" color: #6B6B6B !important;">Daños por agua:</b></td>
+                <td style="text-align: end;">
+                    @cotizadorPlanes.DañosPorAgua
+                </td>
+            </tr>
+            <tr>
+                <td>  <b style=" color: #6B6B6B !important;">Robos partes externas:</b></td>
+                <td style="text-align: end;">
+                    @cotizadorPlanes.RobosPartesExternas
+                </td>
+            </tr> *@
+        </table>
+      
+    </MudCardContent>
+  
+</MudCard>
+
+@code {
+    [Parameter]
+    public CotizadorPlanes cotizadorPlanes { get; set; } = new CotizadorPlanes();
+
+    public int cuotaSelected = 1;
+    public bool esVisible;
+    protected override void OnInitialized()
+    {
+        if(cotizadorPlanes.NombrePlan=="TREBOL PLUS")
+        {
+            esVisible = true;
+        }
+    }
+    private void onCuotaChanged(int value)
+    {
+        cuotaSelected = value;
+
+    }
+
+}
