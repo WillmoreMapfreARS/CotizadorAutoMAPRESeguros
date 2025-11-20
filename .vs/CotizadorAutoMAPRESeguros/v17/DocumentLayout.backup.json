@@ -7,51 +7,44 @@
       "RelativeMoniker": "D:0:0:{44683607-A8E8-4240-8CE6-ACC98BA9B1A4}|CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros.csproj|solutionrelative:cotizadorautomapreseguros\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0258D859-48BE-4645-BF18-2A41F83F2403}|CotizadorAutoMAPFRESeguros.Server\\CotizadorAutoMAPFRESeguros.Server.csproj|d:\\repositorio\\cotizadorautomapreseguros\\cotizadorautomapfreseguros.server\\controllers\\cotizadorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0258D859-48BE-4645-BF18-2A41F83F2403}|CotizadorAutoMAPFRESeguros.Server\\CotizadorAutoMAPFRESeguros.Server.csproj|solutionrelative:cotizadorautomapfreseguros.server\\controllers\\cotizadorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0258D859-48BE-4645-BF18-2A41F83F2403}|CotizadorAutoMAPFRESeguros.Server\\CotizadorAutoMAPFRESeguros.Server.csproj|d:\\repositorio\\cotizadorautomapreseguros\\cotizadorautomapfreseguros.server\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{0258D859-48BE-4645-BF18-2A41F83F2403}|CotizadorAutoMAPFRESeguros.Server\\CotizadorAutoMAPFRESeguros.Server.csproj|solutionrelative:cotizadorautomapfreseguros.server\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1126FC6E-57FA-442B-A35A-72B7C4912702}|CotizadorAutoMAPFRESeguros.Share\\CotizadorAutoMAPFRESeguros.Share.csproj|d:\\repositorio\\cotizadorautomapreseguros\\cotizadorautomapfreseguros.share\\models\\identificaciondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1126FC6E-57FA-442B-A35A-72B7C4912702}|CotizadorAutoMAPFRESeguros.Share\\CotizadorAutoMAPFRESeguros.Share.csproj|solutionrelative:cotizadorautomapfreseguros.share\\models\\identificaciondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{44683607-A8E8-4240-8CE6-ACC98BA9B1A4}|CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros.csproj|d:\\repositorio\\cotizadorautomapreseguros\\cotizadorautomapreseguros\\components\\customcardcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{44683607-A8E8-4240-8CE6-ACC98BA9B1A4}|CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros.csproj|solutionrelative:cotizadorautomapreseguros\\components\\customcardcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{44683607-A8E8-4240-8CE6-ACC98BA9B1A4}|CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros.csproj|d:\\repositorio\\cotizadorautomapreseguros\\cotizadorautomapreseguros\\components\\cotizadorcardcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{44683607-A8E8-4240-8CE6-ACC98BA9B1A4}|CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros.csproj|solutionrelative:cotizadorautomapreseguros\\components\\cotizadorcardcomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{44683607-A8E8-4240-8CE6-ACC98BA9B1A4}|CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros.csproj|d:\\repositorio\\cotizadorautomapreseguros\\cotizadorautomapreseguros\\repositorios\\repositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{44683607-A8E8-4240-8CE6-ACC98BA9B1A4}|CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros.csproj|solutionrelative:cotizadorautomapreseguros\\repositorios\\repositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1126FC6E-57FA-442B-A35A-72B7C4912702}|CotizadorAutoMAPFRESeguros.Share\\CotizadorAutoMAPFRESeguros.Share.csproj|d:\\repositorio\\cotizadorautomapreseguros\\cotizadorautomapfreseguros.share\\models\\quickquotationresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1126FC6E-57FA-442B-A35A-72B7C4912702}|CotizadorAutoMAPFRESeguros.Share\\CotizadorAutoMAPFRESeguros.Share.csproj|solutionrelative:cotizadorautomapfreseguros.share\\models\\quickquotationresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1126FC6E-57FA-442B-A35A-72B7C4912702}|CotizadorAutoMAPFRESeguros.Share\\CotizadorAutoMAPFRESeguros.Share.csproj|d:\\repositorio\\cotizadorautomapreseguros\\cotizadorautomapfreseguros.share\\models\\cotizadorplanes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1126FC6E-57FA-442B-A35A-72B7C4912702}|CotizadorAutoMAPFRESeguros.Share\\CotizadorAutoMAPFRESeguros.Share.csproj|solutionrelative:cotizadorautomapfreseguros.share\\models\\cotizadorplanes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mwillmore\\AppData\\Local\\SourceServer\\0a5f8ad4f68bc70066de03a2ba2de3321866eeace55348cbea9574705ba43447\\src\\libraries\\System.Private.CoreLib\\src\\System\\Threading\\ExecutionContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{44683607-A8E8-4240-8CE6-ACC98BA9B1A4}|CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros.csproj|d:\\repositorio\\cotizadorautomapreseguros\\cotizadorautomapreseguros\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{44683607-A8E8-4240-8CE6-ACC98BA9B1A4}|CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros.csproj|solutionrelative:cotizadorautomapreseguros\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{44683607-A8E8-4240-8CE6-ACC98BA9B1A4}|CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros.csproj|d:\\repositorio\\cotizadorautomapreseguros\\cotizadorautomapreseguros\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{44683607-A8E8-4240-8CE6-ACC98BA9B1A4}|CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros.csproj|solutionrelative:cotizadorautomapreseguros\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{44683607-A8E8-4240-8CE6-ACC98BA9B1A4}|CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros.csproj|d:\\repositorio\\cotizadorautomapreseguros\\cotizadorautomapreseguros\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{44683607-A8E8-4240-8CE6-ACC98BA9B1A4}|CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros.csproj|solutionrelative:cotizadorautomapreseguros\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{44683607-A8E8-4240-8CE6-ACC98BA9B1A4}|CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros.csproj|d:\\repositorio\\cotizadorautomapreseguros\\cotizadorautomapreseguros\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{44683607-A8E8-4240-8CE6-ACC98BA9B1A4}|CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros.csproj|solutionrelative:cotizadorautomapreseguros\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{44683607-A8E8-4240-8CE6-ACC98BA9B1A4}|CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros.csproj|d:\\repositorio\\cotizadorautomapreseguros\\cotizadorautomapreseguros\\wwwroot\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{44683607-A8E8-4240-8CE6-ACC98BA9B1A4}|CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros.csproj|solutionrelative:cotizadorautomapreseguros\\wwwroot\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44683607-A8E8-4240-8CE6-ACC98BA9B1A4}|CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros.csproj|d:\\repositorio\\cotizadorautomapreseguros\\cotizadorautomapreseguros\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44683607-A8E8-4240-8CE6-ACC98BA9B1A4}|CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros.csproj|solutionrelative:cotizadorautomapreseguros\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0258D859-48BE-4645-BF18-2A41F83F2403}|CotizadorAutoMAPFRESeguros.Server\\CotizadorAutoMAPFRESeguros.Server.csproj|d:\\repositorio\\cotizadorautomapreseguros\\cotizadorautomapfreseguros.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0258D859-48BE-4645-BF18-2A41F83F2403}|CotizadorAutoMAPFRESeguros.Server\\CotizadorAutoMAPFRESeguros.Server.csproj|solutionrelative:cotizadorautomapfreseguros.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0258D859-48BE-4645-BF18-2A41F83F2403}|CotizadorAutoMAPFRESeguros.Server\\CotizadorAutoMAPFRESeguros.Server.csproj|d:\\repositorio\\cotizadorautomapreseguros\\cotizadorautomapfreseguros.server\\cotizadorautomapfreseguros.server.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{0258D859-48BE-4645-BF18-2A41F83F2403}|CotizadorAutoMAPFRESeguros.Server\\CotizadorAutoMAPFRESeguros.Server.csproj|solutionrelative:cotizadorautomapfreseguros.server\\cotizadorautomapfreseguros.server.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44683607-A8E8-4240-8CE6-ACC98BA9B1A4}|CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros.csproj|d:\\repositorio\\cotizadorautomapreseguros\\cotizadorautomapreseguros\\components\\llamamecomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{44683607-A8E8-4240-8CE6-ACC98BA9B1A4}|CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros.csproj|solutionrelative:cotizadorautomapreseguros\\components\\llamamecomponent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0258D859-48BE-4645-BF18-2A41F83F2403}|CotizadorAutoMAPFRESeguros.Server\\CotizadorAutoMAPFRESeguros.Server.csproj|d:\\repositorio\\cotizadorautomapreseguros\\cotizadorautomapfreseguros.server\\controllers\\cotizadorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0258D859-48BE-4645-BF18-2A41F83F2403}|CotizadorAutoMAPFRESeguros.Server\\CotizadorAutoMAPFRESeguros.Server.csproj|solutionrelative:cotizadorautomapfreseguros.server\\controllers\\cotizadorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1126FC6E-57FA-442B-A35A-72B7C4912702}|CotizadorAutoMAPFRESeguros.Share\\CotizadorAutoMAPFRESeguros.Share.csproj|d:\\repositorio\\cotizadorautomapreseguros\\cotizadorautomapfreseguros.share\\models\\insurabilityscalerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1126FC6E-57FA-442B-A35A-72B7C4912702}|CotizadorAutoMAPFRESeguros.Share\\CotizadorAutoMAPFRESeguros.Share.csproj|solutionrelative:cotizadorautomapfreseguros.share\\models\\insurabilityscalerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -61,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -73,54 +66,94 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IdentificacionDTO.cs",
-              "DocumentMoniker": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPFRESeguros.Share\\Models\\IdentificacionDTO.cs",
-              "RelativeDocumentMoniker": "CotizadorAutoMAPFRESeguros.Share\\Models\\IdentificacionDTO.cs",
-              "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPFRESeguros.Share\\Models\\IdentificacionDTO.cs",
-              "RelativeToolTip": "CotizadorAutoMAPFRESeguros.Share\\Models\\IdentificacionDTO.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAgwB0AAAAFAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\Program.cs",
+              "RelativeDocumentMoniker": "CotizadorAutoMAPRESeguros\\Program.cs",
+              "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\Program.cs",
+              "RelativeToolTip": "CotizadorAutoMAPRESeguros\\Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T14:49:23.102Z",
+              "WhenOpened": "2025-11-20T19:29:16.278Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "QuickQuotationResponse.cs",
-              "DocumentMoniker": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPFRESeguros.Share\\Models\\QuickQuotationResponse.cs",
-              "RelativeDocumentMoniker": "CotizadorAutoMAPFRESeguros.Share\\Models\\QuickQuotationResponse.cs",
-              "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPFRESeguros.Share\\Models\\QuickQuotationResponse.cs",
-              "RelativeToolTip": "CotizadorAutoMAPFRESeguros.Share\\Models\\QuickQuotationResponse.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAtwCMAAAAVAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPFRESeguros.Server\\Program.cs",
+              "RelativeDocumentMoniker": "CotizadorAutoMAPFRESeguros.Server\\Program.cs",
+              "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPFRESeguros.Server\\Program.cs",
+              "RelativeToolTip": "CotizadorAutoMAPFRESeguros.Server\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T13:56:20.177Z",
+              "WhenOpened": "2025-11-20T19:28:32.976Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CotizadorAutoMAPFRESeguros.Server.http",
+              "DocumentMoniker": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPFRESeguros.Server\\CotizadorAutoMAPFRESeguros.Server.http",
+              "RelativeDocumentMoniker": "CotizadorAutoMAPFRESeguros.Server\\CotizadorAutoMAPFRESeguros.Server.http",
+              "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPFRESeguros.Server\\CotizadorAutoMAPFRESeguros.Server.http",
+              "RelativeToolTip": "CotizadorAutoMAPFRESeguros.Server\\CotizadorAutoMAPFRESeguros.Server.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-11-20T19:28:32.109Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "CotizadorAutoMAPRESeguros\\Layout\\MainLayout.razor",
+              "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "CotizadorAutoMAPRESeguros\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAADIAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-20T15:07:08.941Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LlamameComponent.razor",
+              "DocumentMoniker": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\Components\\LlamameComponent.razor",
+              "RelativeDocumentMoniker": "CotizadorAutoMAPRESeguros\\Components\\LlamameComponent.razor",
+              "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\Components\\LlamameComponent.razor",
+              "RelativeToolTip": "CotizadorAutoMAPRESeguros\\Components\\LlamameComponent.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-20T15:00:13.659Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPFRESeguros.Server\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "CotizadorAutoMAPFRESeguros.Server\\appsettings.Development.json",
-              "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPFRESeguros.Server\\appsettings.Development.json",
-              "RelativeToolTip": "CotizadorAutoMAPFRESeguros.Server\\appsettings.Development.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-04T15:29:29.428Z",
+              "Title": "CotizadorCardComponent.razor",
+              "DocumentMoniker": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\Components\\CotizadorCardComponent.razor",
+              "RelativeDocumentMoniker": "CotizadorAutoMAPRESeguros\\Components\\CotizadorCardComponent.razor",
+              "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\Components\\CotizadorCardComponent.razor",
+              "RelativeToolTip": "CotizadorAutoMAPRESeguros\\Components\\CotizadorCardComponent.razor",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAADQAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-20T14:41:30.621Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "index.html",
-              "DocumentMoniker": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\wwwroot\\index.html",
-              "RelativeDocumentMoniker": "CotizadorAutoMAPRESeguros\\wwwroot\\index.html",
-              "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\wwwroot\\index.html",
-              "RelativeToolTip": "CotizadorAutoMAPRESeguros\\wwwroot\\index.html",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-10-21T12:23:15.568Z"
+              "DocumentIndex": 1,
+              "Title": "CustomCardComponent.razor",
+              "DocumentMoniker": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\Components\\CustomCardComponent.razor",
+              "RelativeDocumentMoniker": "CotizadorAutoMAPRESeguros\\Components\\CustomCardComponent.razor",
+              "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\Components\\CustomCardComponent.razor",
+              "RelativeToolTip": "CotizadorAutoMAPRESeguros\\Components\\CustomCardComponent.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-20T14:41:26.95Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -128,110 +161,50 @@
               "Title": "Home.razor",
               "DocumentMoniker": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\Pages\\Home.razor",
               "RelativeDocumentMoniker": "CotizadorAutoMAPRESeguros\\Pages\\Home.razor",
-              "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\Pages\\Home.razor",
-              "RelativeToolTip": "CotizadorAutoMAPRESeguros\\Pages\\Home.razor",
-              "ViewState": "AgIAAGAEAAAAAAAAAAD4v24EAAAXAAAAAAAAAA==",
+              "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\Pages\\Home.razor*",
+              "RelativeToolTip": "CotizadorAutoMAPRESeguros\\Pages\\Home.razor*",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAEUAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-10-20T20:38:34.409Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CotizadorController.cs",
-              "DocumentMoniker": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPFRESeguros.Server\\Controllers\\CotizadorController.cs",
-              "RelativeDocumentMoniker": "CotizadorAutoMAPFRESeguros.Server\\Controllers\\CotizadorController.cs",
-              "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPFRESeguros.Server\\Controllers\\CotizadorController.cs",
-              "RelativeToolTip": "CotizadorAutoMAPFRESeguros.Server\\Controllers\\CotizadorController.cs",
-              "ViewState": "AgIAAHcBAAAAAAAAAAAswNIBAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-16T18:02:23.296Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "CotizadorCardComponent.razor",
-              "DocumentMoniker": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\Components\\CotizadorCardComponent.razor",
-              "RelativeDocumentMoniker": "CotizadorAutoMAPRESeguros\\Components\\CotizadorCardComponent.razor",
-              "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\Components\\CotizadorCardComponent.razor",
-              "RelativeToolTip": "CotizadorAutoMAPRESeguros\\Components\\CotizadorCardComponent.razor",
-              "ViewState": "AgIAAIAAAAAAAAAAAAAewI0AAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-20T19:33:47.534Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\wwwroot\\appsettings.json",
               "RelativeDocumentMoniker": "CotizadorAutoMAPRESeguros\\wwwroot\\appsettings.json",
               "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\wwwroot\\appsettings.json",
               "RelativeToolTip": "CotizadorAutoMAPRESeguros\\wwwroot\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-03T12:02:51.086Z"
+              "WhenOpened": "2025-11-20T19:29:52.364Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "_Imports.razor",
-              "DocumentMoniker": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\_Imports.razor",
-              "RelativeDocumentMoniker": "CotizadorAutoMAPRESeguros\\_Imports.razor",
-              "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\_Imports.razor",
-              "RelativeToolTip": "CotizadorAutoMAPRESeguros\\_Imports.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-03T17:43:00.143Z"
+              "Title": "InsurabilityScaleRequest.cs",
+              "DocumentMoniker": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPFRESeguros.Share\\Models\\InsurabilityScaleRequest.cs",
+              "RelativeDocumentMoniker": "CotizadorAutoMAPFRESeguros.Share\\Models\\InsurabilityScaleRequest.cs",
+              "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPFRESeguros.Share\\Models\\InsurabilityScaleRequest.cs",
+              "RelativeToolTip": "CotizadorAutoMAPFRESeguros.Share\\Models\\InsurabilityScaleRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T13:53:38.045Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "App.razor",
-              "DocumentMoniker": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\App.razor",
-              "RelativeDocumentMoniker": "CotizadorAutoMAPRESeguros\\App.razor",
-              "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\App.razor",
-              "RelativeToolTip": "CotizadorAutoMAPRESeguros\\App.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-03T17:45:45.526Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Repositorio.cs",
-              "DocumentMoniker": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\Repositorios\\Repositorio.cs",
-              "RelativeDocumentMoniker": "CotizadorAutoMAPRESeguros\\Repositorios\\Repositorio.cs",
-              "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPRESeguros\\Repositorios\\Repositorio.cs",
-              "RelativeToolTip": "CotizadorAutoMAPRESeguros\\Repositorios\\Repositorio.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBoAAAAyAAAAAAAAAA==",
+              "Title": "CotizadorController.cs",
+              "DocumentMoniker": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPFRESeguros.Server\\Controllers\\CotizadorController.cs",
+              "RelativeDocumentMoniker": "CotizadorAutoMAPFRESeguros.Server\\Controllers\\CotizadorController.cs",
+              "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPFRESeguros.Server\\Controllers\\CotizadorController.cs",
+              "RelativeToolTip": "CotizadorAutoMAPFRESeguros.Server\\Controllers\\CotizadorController.cs",
+              "ViewState": "AgIAAFMBAAAAAAAAAAApwG4BAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T15:23:49.591Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ExecutionContext.cs",
-              "DocumentMoniker": "C:\\Users\\mwillmore\\AppData\\Local\\SourceServer\\0a5f8ad4f68bc70066de03a2ba2de3321866eeace55348cbea9574705ba43447\\src\\libraries\\System.Private.CoreLib\\src\\System\\Threading\\ExecutionContext.cs",
-              "ToolTip": "C:\\Users\\mwillmore\\AppData\\Local\\SourceServer\\0a5f8ad4f68bc70066de03a2ba2de3321866eeace55348cbea9574705ba43447\\src\\libraries\\System.Private.CoreLib\\src\\System\\Threading\\ExecutionContext.cs",
-              "ViewState": "AgIAAKEAAAAAAAAAAAD4v7IAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T15:34:55.851Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CotizadorPlanes.cs",
-              "DocumentMoniker": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPFRESeguros.Share\\Models\\CotizadorPlanes.cs",
-              "RelativeDocumentMoniker": "CotizadorAutoMAPFRESeguros.Share\\Models\\CotizadorPlanes.cs",
-              "ToolTip": "D:\\Repositorio\\CotizadorAutoMAPRESeguros\\CotizadorAutoMAPFRESeguros.Share\\Models\\CotizadorPlanes.cs",
-              "RelativeToolTip": "CotizadorAutoMAPFRESeguros.Share\\Models\\CotizadorPlanes.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABwAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-20T13:24:34.742Z",
+              "WhenOpened": "2025-11-20T13:51:49.491Z",
               "EditorCaption": ""
             }
           ]

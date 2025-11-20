@@ -1,0 +1,27 @@
+﻿@using MudBlazor
+
+<style>
+    .dialog-inner {
+        background-image: url('chica_llamame.png');
+        background-repeat: no-repeat;
+        background-position: bottom right;
+        background-size: 300px; /* ajusta el tamaño */
+        padding-bottom: 40px;
+    }
+
+</style>
+<div class="dialog-inner" style="height:500px;">
+
+    <MudText Typo="Typo.h1">¿Te ayudamos?</MudText>
+
+</div>
+
+
+
+
+
+@code {
+    [CascadingParameter] IMudDialogInstance Dialog { get; set; }
+    [Parameter]
+    public bool Formulariocompletado { get; set; }
+}

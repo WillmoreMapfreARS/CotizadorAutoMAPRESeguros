@@ -1,5 +1,7 @@
 ﻿@using MudBlazor
 @inject IJSRuntime JSRuntime
+@inject IDialogService DialogService
+@inject IConfiguration configuration
 
 @inherits LayoutComponentBase
 
@@ -26,9 +28,12 @@
 
         @* <MudText Align=Align.Center" Typo="Typo.h6" Style="color:white">Calcula el precio de tu seguro de vehículo</MudText> *@
         <MudSpacer />
-        <MudFab Color="Color.Secondary" Size="Size.Small" StartIcon="@Icons.Material.Filled.PhoneAndroid" Style="elevation:0" title="Llamar" />
-    </MudAppBar>
-    @* *@
+        <a href="tel:@telefono">
+            <MudFab Color="Color.Secondary"  Size="Size.Small" StartIcon="@Icons.Material.Filled.PhoneAndroid" Style="elevation:0" title="Llamar" />
+
+        </a>
+     </MudAppBar>
+    @*OnClick="AbrirLLamame" *@
         <body class="img" style="margin: 0 !important;    border: 0 !important;    padding: 0 !important">
         <MudContainer >    
             @Body
@@ -39,8 +44,13 @@
 
 </MudLayout>
 @code {
-
+    private string telefono = "";
     private bool isMobile;
+    protected override Task OnInitializedAsync()
+    {
+        telefono = configuration["tel"]!;
+        return base.OnInitializedAsync();
+    }  
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -49,6 +59,21 @@
             isMobile = await JSRuntime.InvokeAsync<bool>("isMobile");
             StateHasChanged();
         }
+    }
+    private async Task AbrirLLamame()
+    {
+        var opciones = new DialogOptions()
+        {
+            CloseButton = true,
+            MaxWidth = MaxWidth.Small,
+            FullWidth = true
+        };
+        var parametros = new DialogParameters()
+        {
+            {"Formulariocompletado", false}
+        };
+        var dialog = DialogService.Show<LlamameComponent>("", parametros, opciones);
+        var resultado = await dialog.Result;
     }
 
     MudTheme MyCustomTheme = new MudTheme()

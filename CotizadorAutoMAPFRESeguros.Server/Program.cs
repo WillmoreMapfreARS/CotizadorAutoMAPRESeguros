@@ -66,6 +66,9 @@ namespace CotizadorAutoMAPFRESeguros.Server
                     policy.WithOrigins("https://localhost:7286") // <- tu frontend
                           .AllowAnyHeader()
                           .AllowAnyMethod();
+                    policy.WithOrigins("http://10.160.225.39:9095") // <- tu frontend
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
                 });
             });
 
@@ -79,7 +82,7 @@ namespace CotizadorAutoMAPFRESeguros.Server
             // 2. Usar la política CORS definida
             app.UseCors("AllowFrontend");
             app.UseSwagger();
-          
+
             app.UseHttpsRedirection();
 
             app.UseAuthorization();

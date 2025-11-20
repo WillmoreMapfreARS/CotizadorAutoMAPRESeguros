@@ -38,3 +38,4 @@ D:\Repositorio\CotizadorAutoMAPRESeguros\CotizadorAutoMAPFRESeguros.Server\obj\D
 D:\Repositorio\CotizadorAutoMAPRESeguros\CotizadorAutoMAPFRESeguros.Server\obj\Debug\net9.0\ref\CotizadorAutoMAPFRESeguros.Server.dll
 D:\Repositorio\CotizadorAutoMAPRESeguros\CotizadorAutoMAPFRESeguros.Server\bin\Debug\net9.0\CotizadorAutoMAPFRESeguros.Share.dll
 D:\Repositorio\CotizadorAutoMAPRESeguros\CotizadorAutoMAPFRESeguros.Server\bin\Debug\net9.0\CotizadorAutoMAPFRESeguros.Share.pdb
+D:\Repositorio\CotizadorAutoMAPRESeguros\CotizadorAutoMAPFRESeguros.Server\obj\Debug\net9.0\swae.build.ex.cache

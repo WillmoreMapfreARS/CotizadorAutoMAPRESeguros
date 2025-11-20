@@ -8,6 +8,8 @@
 @using MudBlazor
 @using Newtonsoft.Json
 @using System.Globalization
+@using System.Net.Mail
+@using System.Text.RegularExpressions
 <style>
     .mud-typography, .mud-typography-body1 {
         color: #6B6B6B !important;
@@ -62,17 +64,18 @@
                     <MudIconButton OnClick="@(() => PreviousStep())" Icon="@Icons.Material.Filled.ArrowBack" Color="Color.Secondary" Disabled="@(_index <= 0)" />
                 </div>
 
-                <div>
+              @*   <div>
 
                     <MudIconButton OnClick="@(() => NextStep())" Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Secondary" />
-                </div>
+                </div> *@
             }
 
         </div>
 
 
 
-        <MudStepper @bind-ActiveIndex="_index" CompletedStepColor="Color.Secondary" CurrentStepColor="Color.Secondary" NavClass="border-b mud-border-lines-default" StepClass="pt-4" ShowResetButton>
+        <MudStepper  @bind-ActiveIndex="_index" CompletedStepColor="Color.Secondary" CurrentStepColor="Color.Secondary" NavClass="border-b mud-border-lines-default" StepClass="pt-4">
+             
 
             <TitleTemplate>@*This empty template prevents rendering the title*@</TitleTemplate>
             <ConnectorTemplate Context="step">
@@ -116,7 +119,7 @@
                                         foreach (var item in Marcas)
                                         {
                                             <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
-                                                <MudButton OnClick="@(() => MarcaChange(item.parameterId))">
+                                                <MudButton Disabled="loading" OnClick="@(() => MarcaChange(item.parameterId))">
                                                     <MudPaper Width="150px" Elevation="0">
                                                         <CustomCardComponent imgSrc="@item.logo" descripcion="@item.parameterName"></CustomCardComponent>
                                                     </MudPaper>
@@ -161,7 +164,7 @@
                                         if (count <= 10)
                                         {
                                             <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
-                                                <MudButton OnClick="@(() => ModeloChange(item.parameterId))">
+                                                <MudButton Disabled="loading" OnClick="@(() => ModeloChange(item.parameterId))">
                                                     <MudPaper Width="150px">
                                                         <CustomCardComponent imgSrc="@item.logo" descripcion="@item.parameterName"></CustomCardComponent>
                                                     </MudPaper>
@@ -206,41 +209,7 @@
                             <div class="p-md-5" style="width:100%; text-align:center;">
                                 <h2>¿Cuál es el modelo de tu <b>@Marca</b>?</h2>
 
-                                @*        <MudGrid Justify="Justify.Center">
-
-                                    @if (Modelos.Count() > 0)
-                                    {
-
-
-
-                                        var count = 1;
-                                        foreach (var item in Modelos)
-                                        {
-                                            if (count <= 10)
-                                            {
-                                                <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
-                                                    <MudButton OnClick="@(() => ModeloChange(item.parameterId))">
-                                                        <MudPaper Width="250px" Elevation="0">
-
-                                                            <MudCard>
-                                                                <MudCardContent>
-                                                                    <MudText Align="Align.Center">@item.parameterName</MudText>
-
-                                                                </MudCardContent>
-
-                                                            </MudCard>
-
-                                                        </MudPaper>
-                                                    </MudButton>
-                                                </MudItem>
-                                            }
-                                            count++;
-
-                                        }
-
-                                    }
-
-                                </MudGrid> *@
+                             
 
                                 <div class="row p-5">
                                     <MudGrid Justify="Justify.Center">
@@ -268,35 +237,7 @@
                     <MudHidden Breakpoint="Breakpoint.SmAndDown" Invert="true">
                         <div class="p-md-5;">
                             <h2 style="text-align: center;">¿Cuál es el modelo de tu <b>@Marca</b>?</h2>
-                            @*      <MudGrid Justify="Justify.Center">
-
-                                @if (Modelos.Count() > 0)
-                                {
-                                    var count = 1;
-                                    foreach (var item in Modelos)
-                                    {
-                                        if (count <= 10)
-                                        {
-                                            <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
-                                                <MudButton OnClick="@(() => ModeloChange(item.parameterId))">
-                                                    <MudPaper Width="150px">
-                                                        <MudCard>
-                                                            <MudCardContent>
-                                                                <MudText Align="Align.Center" Style="font-size:14px">@item.parameterName</MudText>
-
-                                                            </MudCardContent>
-
-                                                        </MudCard>
-                                                    </MudPaper>
-                                                </MudButton>
-                                            </MudItem>
-                                        }
-                                        count++;
-                                    }
-
-                                }
-
-                            </MudGrid> *@
+                           
 
                             <div class="row p-5">
                                 <MudGrid Justify="Justify.Center">
@@ -312,9 +253,6 @@
 
                                 </MudGrid>
 
-
-
-
                             </div>
                         </div>
 
@@ -328,39 +266,6 @@
                             <div class="p-md-5" style="width:100%; text-align:center;">
                                 <h2>¿Cuál es el submodelo de tu <b>@Marca</b>?</h2>
 
-                                @*  <MudGrid Justify="Justify.Center">
-
-                                    @if (SubModelos.Count() > 0)
-                                    {
-                                        var count = 0;
-                                        foreach (var item in SubModelos)
-                                        {
-                                            if (count <= 10)
-                                            {
-                                                <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
-                                                    <MudButton OnClick="@(() => SubModeloChange(item.parameterId))">
-                                                        <MudPaper Width="250px" Elevation="0">
-
-                                                            <MudCard>
-                                                                <MudCardContent>
-                                                                    <MudText Align="Align.Center">@item.parameterName</MudText>
-
-                                                                </MudCardContent>
-
-                                                            </MudCard>
-
-                                                        </MudPaper>
-                                                    </MudButton>
-                                                </MudItem>
-                                            }
-                                            count++;
-
-                                        }
-
-                                    }
-
-                                </MudGrid>
- *@
                                 <div class="row p-5">
                                     <MudGrid Justify="Justify.Center">
                                         <MudItem Style="margin-top:15px" Xs="12" Sm="12" Md="8" Lg="8" Xl="8">
@@ -385,36 +290,7 @@
                     <MudHidden Breakpoint="Breakpoint.SmAndDown" Invert="true">
                         <div class="p-md-5;">
                             <h2 style="text-align: center;">¿Cuál es el submodelo de tu <b>@Marca</b>?</h2>
-                            @*     <MudGrid Justify="Justify.Center">
-
-                                @if (Marcas.Count() > 0)
-                                {
-                                    var count = 0;
-                                    foreach (var item in Marcas)
-                                    {
-                                        if (count <= 10)
-                                        {
-                                            <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
-                                                <MudButton OnClick="@(() => ModeloChange(item.parameterId))">
-                                                    <MudPaper Width="150px">
-                                                        <MudCard>
-                                                            <MudCardContent>
-                                                                <MudText Align="Align.Center" Style="font-size:14px">@item.parameterName</MudText>
-
-                                                            </MudCardContent>
-
-                                                        </MudCard>
-                                                    </MudPaper>
-                                                </MudButton>
-                                            </MudItem>
-
-                                        }
-                                        count++;
-                                    }
-
-                                }
-
-                            </MudGrid> *@
+                         
 
                             <div class="row p-5">
                                 <MudGrid Justify="Justify.Center">
@@ -446,38 +322,7 @@
                             <div class="p-md-5" style="width:100%; text-align:center;">
                                 <h2>¿Cuál es el año de tu <b>@Marca</b>?</h2>
 
-                                @*   <MudGrid Justify="Justify.Center">
-
-                                    @if (Years.Count() > 0)
-                                    {
-                                        var count = 1;
-                                        foreach (var item in Years)
-                                        {
-                                            if (count <= 10)
-                                            {
-                                                <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
-                                                    <MudButton OnClick="@(() => YearChange(item.parameterId))">
-                                                        <MudPaper Width="250px" Elevation="0">
-
-                                                            <MudCard>
-                                                                <MudCardContent>
-                                                                    <MudText Align="Align.Center">@item.parameterId</MudText>
-
-                                                                </MudCardContent>
-
-                                                            </MudCard>
-
-                                                        </MudPaper>
-                                                    </MudButton>
-                                                </MudItem>
-                                            }
-
-                                            count++;
-                                        }
-
-                                    }
-
-                                </MudGrid> *@
+                              
 
                                 <div class="row p-5">
                                     <MudGrid Justify="Justify.Center">
@@ -503,40 +348,7 @@
                     <MudHidden Breakpoint="Breakpoint.SmAndDown" Invert="true">
                         <div class="p-md-5;">
                             <h2 style="text-align: center;">¿Cuál es la año de tu <b>@Marca</b>?</h2>
-                            @*   <MudGrid Justify="Justify.Center">
-
-                                @if (Years.Count() > 0)
-                                {
-                                    var count = 1;
-                                    foreach (var item in Years)
-                                    {
-                                        if (count <= 10)
-                                        {
-                                            <MudItem Style="margin-top:15px" Xs="6" Sm="3" Md="4" Lg="3" Xl="3">
-                                                <MudButton OnClick="@(() => YearChange(item.parameterId))">
-                                                    <MudPaper Width="150px">
-
-                                                        <MudCard>
-                                                            <MudCardContent>
-                                                                <MudText Align="Align.Center" Style="font-size:14px">@item.parameterId</MudText>
-
-                                                            </MudCardContent>
-
-                                                        </MudCard>
-
-                                                    </MudPaper>
-                                                </MudButton>
-                                            </MudItem>
-
-                                        }
-
-                                        count++;
-                                    }
-
-                                }
-
-                            </MudGrid>
- *@
+                           
                             <div class="row p-5">
                                 <MudGrid Justify="Justify.Center">
                                     <MudItem Style="margin-top:15px" Xs="12" Sm="12" Md="8" Lg="8" Xl="8">
@@ -593,22 +405,6 @@
 
                                 </MudGrid>
 
-                                @*         <div class="row p-5">
-                                    <MudGrid Justify="Justify.Center">
-                                        <MudItem Style="margin-top:15px" Xs="12" Sm="12" Md="8" Lg="8" Xl="8">
-
-                                            <MudAutocomplete T="Marcas"
-                                                             SearchFunc="@Search" AdornmentIcon="@Icons.Material.Filled.Search" Label="Todas las marcas"
-                                                             Variant="Variant.Outlined"
-                                                             AdornmentColor="Color.Secondary"
-                                                             ValueChanged="@((e)=>MarcaChange(e.parameterId))"
-                                                             ToStringFunc="@(e=> e==null?null : $"{e.parameterName}")" />
-
-                                        </MudItem>
-
-                                    </MudGrid>
-
-                                </div> *@
                             </div>
                         </div>
 
@@ -643,24 +439,6 @@
 
                             </MudGrid>
 
-                            @*       <div class="row p-5">
-                                <MudGrid Justify="Justify.Center">
-                                    <MudItem Style="margin-top:15px" Xs="12" Sm="12" Md="8" Lg="8" Xl="8">
-                                        <MudAutocomplete T="Catalog"
-                                                         SearchFunc="@Search" AdornmentIcon="@Icons.Material.Filled.Search" Label="Todas las marcas"
-                                                         Variant="Variant.Outlined"
-                                                         AdornmentColor="Color.Secondary"
-                                                         ValueChanged="@((e)=>EquipoGasChange(e.parameterId))"
-                                                         ToStringFunc="@(e=> e==null?null : $"{e.parameterName}")" />
-
-                                    </MudItem>
-
-                                </MudGrid>
-
-
-
-
-                            </div> *@
                         </div>
 
                     </MudHidden>
@@ -969,7 +747,7 @@
                             <MudCard>
                                 <MudForm Model="@model">
                                     <MudCardContent>
-                                        <MudSelect Label="Tipo" T="string" Variant="Variant.Outlined" @bind-Value="model.Owner.identityDocumentTypeCode">
+                                        <MudSelect Label="Tipo" T="string" Variant="Variant.Outlined" ValueChanged="onIdentityTypeChange" >
                                             <MudSelectItem T="string" Value="@("CED")">
                                                 CEDULA
                                             </MudSelectItem>
@@ -984,22 +762,26 @@
                                         {
                                             <MudTextField Variant="Variant.Outlined" Mask="@(new PatternMask("000-0000000-0"))" Required @bind-Value="model.Owner.identityDocumentNumber"
                                                           For="@(() => model.Owner.identityDocumentNumber)"
-                                                          Immediate="true"
+                                                          OnBlur="BuscarNombre"
                                                           Label="No. Identificacion" />
                                         }
                                         else
                                         {
                                             <MudTextField Variant="Variant.Outlined" OnBlur="BuscarNombre" Required @bind-Value="model.Owner.identityDocumentNumber"
                                                           For="@(() => model.Owner.identityDocumentNumber)"
-                                                          Immediate="true"
+                                                         
                                                           Label="No. Identificacion" />
                                         }
 
 
-                                        <MudTextField @bind-Value="model.Owner.name" Required ReadOnly Variant="Variant.Outlined"
+                                        <MudTextField @bind-Value="model.Owner.name" Required ReadOnly="disalbedField" Variant="Variant.Outlined"
                                                       For="@(() => model.Owner.name)"
                                                       Immediate="true"
                                                       Label="Nombre y Apellidos" />
+                                        <MudTextField @bind-Value="model.Owner.email" Variant="Variant.Outlined" Required InputType="InputType.Email"
+                                                      For="@(() => model.Owner.email)"
+                                                      Immediate="true"
+                                                      Label="Email" />
 
                                         <MudTextField @bind-Value="model.Owner.mobile" Variant="Variant.Outlined" Mask="@(new PatternMask("(000)000-0000"))"
                                                       For="@(() => model.Owner.mobile)"
@@ -1056,7 +838,7 @@
                 </MudStack>
             </CompletedContent>
             <ActionContent Context="stepper">
-                <MudButton OnClick="@(() => stepper.ResetAsync())">Reiniciar</MudButton>
+                @* <MudButton OnClick="@(() => stepper.ResetAsync())">Reiniciar</MudButton>
                 @if (!_completed)
                 {
                     <MudIconButton OnClick="@(() => stepper.PreviousStepAsync())" Icon="@Icons.Material.Filled.ArrowBack" Color="Color.Secondary" Disabled="@(_index <= 0)" />
@@ -1066,7 +848,7 @@
                         <MudIconButton OnClick="@(() => stepper.SkipCurrentStepAsync())" Icon="@stepper.SkipButtonIcon" Color="Color.Secondary" />
                     }
                     <MudIconButton OnClick="@(() => stepper.NextStepAsync())" Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Secondary" />
-                }
+                } *@
             </ActionContent>
         </MudStepper>
 
@@ -1102,10 +884,26 @@
     private string Equipo = "";
     private string Uso = "";
     private string Zona = "";
+    private bool disalbedField = true;
 
     private List<CotizadorPlanes> cotizaciones = new List<CotizadorPlanes>();
 
     private List<CuotasPlan> cuotas = new List<CuotasPlan>();
+
+    public async Task onIdentityTypeChange(string value)
+    {
+        model.Owner.name = "";
+        model.Owner.identityDocumentTypeCode = value;
+        if (value == "CED")
+        {
+            disalbedField = true;
+        }
+        else
+        {
+            disalbedField = false;
+        }
+         StateHasChanged();
+    }
 
     private async Task onSlideChange(double valor)
     {
@@ -1146,6 +944,14 @@
 
             var result = respuestaHttp.Response!;
             model.Owner.name = result.naturalPerson.personName.name + " " + result.naturalPerson.personName.firstSurname + " " + result.naturalPerson.personName.secondSurname; ;
+            if(model.Owner.identityDocumentTypeCode == "CED")
+            {
+                disalbedField = true;
+            }
+            else
+            {
+                disalbedField = false;
+            }
 
             loading = false;
         }
@@ -1156,7 +962,18 @@
         }
 
     }
-
+    public bool EsCorreoValido(string correo)
+    {
+        try
+        {
+            string pattern = @"^(?:[a-zA-Z0-9_'^&amp;/+-])+(?:\.(?:[a-zA-Z0-9_'^&amp;/+-])+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$";
+            return Regex.IsMatch(correo, pattern, RegexOptions.IgnoreCase);
+        }
+        catch
+        {
+            return false;
+        }
+    }
     public async Task Cotizar()
     {
         if (model.Owner.identityDocumentNumber.Trim() == "" || model.Owner.identityDocumentTypeCode.Trim() == "" || model.Owner.name.Trim() == "" || model.Owner.mobile.Trim() == "")
@@ -1164,8 +981,13 @@
             await Swal.FireAsync("Aviso", "Favor completar todos los campos", "warning");
             return;
         }
+        if(!EsCorreoValido(model.Owner.email.Trim()))
+        {
+            await Swal.FireAsync("Aviso", "Favor ingresar un email válido", "warning");
+            return;
+        }
         model.Owner.firstSurname = model.Owner.name.Trim();
-        model.Owner.phone = model.Owner.mobile.Trim();
+        model.Owner.phone = model.Owner.mobile.Trim().Replace(")", "").Replace("(", "").Replace("-", "");
 
         try
         {
@@ -1174,7 +996,7 @@
             var respuestaHttp = await repositorio.Post<AutoTrebolRequest, List<CotizadorResponse>>($"api/Cotizador/multipleAutoTrebol", model);
             if (respuestaHttp.Error)
             {
-                await Swal.FireAsync("Aviso", "No existen datos para esta consulta", "warning");
+                await Swal.FireAsync("Aviso", "Error creando la cotización", "error");
                 return;
             }
 
@@ -1185,8 +1007,9 @@
                 var listaCapitalizada = new List<Coverage>();
                 foreach (var i in item.Coverages)
                 {
-                    listaCapitalizada.Add(new Coverage { CoverageDesc = textInfo.ToTitleCase(i.CoverageDesc), CoverageId = i.CoverageId, SumInsuredAmn = i.SumInsuredAmn });
+                    listaCapitalizada.Add(new Coverage { CoverageDesc = textInfo.ToTitleCase(i.CoverageDesc.ToLower().Replace("danos", "Daños")), CoverageId = i.CoverageId, SumInsuredAmn = (i.SumInsuredAmn == "0" ? "Incluida" : Convert.ToDecimal(i.SumInsuredAmn).ToString("C0")) });
                 }
+
                 item.Coverages = listaCapitalizada;
 
             }
@@ -1251,7 +1074,7 @@
             item.CoverageDesc = textInfo.ToTitleCase(item.CoverageDesc.ToLower().Replace("danos", "Daños"));
             if (item.SumInsuredAmn == "0")
             {
-                item.SumInsuredAmn = "Amparada";
+                item.SumInsuredAmn = "Incluida";
             }
             else
             {
@@ -1322,11 +1145,13 @@
             RobosPartesExternas = "Amparada",
             Coverages = coverages
         });
+        loading = true;
         var resultadoHttp = await repositorio.Get<List<Catalog>>("api/Cotizador/vehicleBrands/6/1");
         var equipoResponse = await repositorio.Get<List<Catalog>>("api/Cotizador/gasEquipements");
         var usoResponse = await repositorio.Get<List<Catalog>>("api/Cotizador/vehicleUses/6");
         var zonaResponse = await repositorio.Get<List<Catalog>>("api/Cotizador/drivingZones");
 
+        loading = false;
         if (resultadoHttp.Error)
         {
             var error = await resultadoHttp.ObtenerError();
@@ -1396,14 +1221,15 @@
         var respuestaHttp = await repositorio.Get<List<Catalog>>($"api/Cotizador/vehicleSubModels/6/{model.VariableData.vehicleBrandCode}/{id}");
         if (respuestaHttp.Error)
         {
-            await Swal.FireAsync("Aviso", "No existen submodelos para este modelo", "warning");
+            await Swal.FireAsync("Aviso", "No existen submodelos para este modelo", "warning"); return;
         }
 
         SubModelos = respuestaHttp.Response!;
         loading = false;
 
         var m = Modelos.Where(e => e.parameterId == id).First();
-        Marca += " " + m.parameterName;
+        Modelo = m.parameterName;
+        Marca = Marca +" " + Modelo;
         await NextStep();
         StateHasChanged();
     }
@@ -1425,7 +1251,7 @@
         loading = false;
         var m = SubModelos.Where(e => e.parameterId == id).First();
         SubModelo = m.parameterName;
-        Marca += " " + m.parameterName;
+        Marca = Marca + " " + Modelo+" "+ SubModelo;
         await NextStep();
         StateHasChanged();
     }
@@ -1436,7 +1262,6 @@
         {
             var anio = Convert.ToInt32(id);
             model.VariableData.vehicleSubModelYearNum = anio;
-            Marca += " " + id;
             var requesprecios = new InsurabilityScaleRequest
             {
                 vehicleBrandCode = model.VariableData.vehicleBrandCode,
@@ -1447,25 +1272,30 @@
 
             loading = true;
 
-            var respuestaHttp = await repositorio.Post<InsurabilityScaleRequest, List<VehiclePrices>>($"api/Cotizador/SeachInsurabilityScale", requesprecios);
+            var respuestaHttp = await repositorio.Post<InsurabilityScaleRequest, VehiclePrices>($"api/Cotizador/SeachInsurabilityScale", requesprecios);
             if (respuestaHttp.Error)
             {
-                await Swal.FireAsync("Aviso", "No existen datos para esta consulta", "warning");
+                await Swal.FireAsync("Aviso", "No existen escala de valores para esta consulta", "warning");
                 return;
             }
-
+            Marca = Marca + " " + Modelo + " " + SubModelo + " " + id;
             var result = respuestaHttp.Response!;
 
-            foreach (var item in result)
-            {
-                if (item.vehicleSubModelYearNum == anio)
-                {
-                    maximo = Convert.ToDouble(item.vehicleSubModelMaxValue);
-                    minimo = Convert.ToDouble(item.vehicleSubModelMinValue);
-                    value = Convert.ToDouble(item.vehicleSubModelValue);
-                    valueSugerido = value;
-                }
-            }
+            // foreach (var item in result)
+            // {
+            //     if (item.vehicleSubModelYearNum == anio)
+            //     {
+            //         maximo = Convert.ToDouble(item.vehicleSubModelMaxValue);
+            //         minimo = Convert.ToDouble(item.vehicleSubModelMinValue);
+            //         value = Convert.ToDouble(item.vehicleSubModelValue);
+            //         valueSugerido = value;
+            //     }
+            // }
+            maximo = Convert.ToDouble(result.vehicleSubModelMaxValue);
+            minimo = Convert.ToDouble(result.vehicleSubModelMinValue);
+            value = Convert.ToDouble(result.vehicleSubModelValue);
+            valueSugerido = value;
+           await onSlideChange(value);
 
             loading = false;
 

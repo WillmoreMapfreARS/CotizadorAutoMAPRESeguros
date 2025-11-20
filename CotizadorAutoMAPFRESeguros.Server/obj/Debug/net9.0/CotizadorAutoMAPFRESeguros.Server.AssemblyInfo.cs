@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CotizadorAutoMAPFRESeguros.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0295117019a47472af6a758313a5b0d2d1429f27")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a3c91971e34a1aece037de378b0bbacb0421a596")]
 [assembly: System.Reflection.AssemblyProductAttribute("CotizadorAutoMAPFRESeguros.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CotizadorAutoMAPFRESeguros.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

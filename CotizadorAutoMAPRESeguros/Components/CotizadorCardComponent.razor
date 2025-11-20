@@ -1,4 +1,6 @@
 ﻿@using MudBlazor
+@inject IConfiguration configuration
+@inject IDialogService DialogService
 <style>
     .mud-card-header {
         background-color: red !important;
@@ -41,16 +43,19 @@
 
         <MudText Align="Align.Center" Typo="Typo.h6"><b>RD @cotizadorPlanes.PrecioPlan.ToString("C")</b></MudText>
 
-        <MudText Typo="Typo.body2"><b>Forma de pago</b></MudText>
+     @*    <MudText Typo="Typo.body2"><b>Forma de pago</b></MudText>
         <MudSelect Align="Align.Center" T="int" Value="cuotaSelected" ValueChanged="onCuotaChanged" Variant="Variant.Outlined" Style="margin-bottom:10px">
 
             @foreach (var item in cotizadorPlanes.Cuotas)
             {
                 <MudSelectItem Value="item.valor">@item.descripcion</MudSelectItem>
             }
-        </MudSelect>
-        <MudButton Color="Color.Secondary" Style="width:100%; text-align:center; margin-bottom:10px" Variant="Variant.Filled"><b>LLAMAME</b></MudButton>
+        </MudSelect>OnClick="AbrirLLamame" *@
+        <a href="tel:@telefono">
+            <MudButton Color="Color.Secondary"  Style="width:100%; text-align:center; margin-bottom:10px" Variant="Variant.Filled"><b>LLAMAME</b></MudButton>
 
+        </a>
+        
         <MudText Align="Align.Center" Style="margin-bottom:10px" Typo="Typo.body2">Este es el número de tu cotización:<br /><b>@cotizadorPlanes.IdCotizacion</b></MudText>
         <MudContainer Style="background-color:red; margin-bottom:10px">
             <MudPaper Width="100%" Elevation=0 Style="background-color:transparent; border:none">
@@ -77,67 +82,7 @@
                 </tr>
             }
 
-         @*    <tr>
-                <td>  <b style=" color: #6B6B6B !important;">Auto rentado:</b></td>
-                <td style="text-align: end;">
-                    @cotizadorPlanes.AutoRentado
-                </td>
-            </tr>
-
-            <tr>
-                <td>  <b style=" color: #6B6B6B !important;">Responsabilidad civil:</b></td>
-                <td style="text-align: end;">
-                    @cotizadorPlanes.ResponsbilidadCivil
-                </td>
-            </tr>
-            <tr>
-                <td>  <b style=" color: #6B6B6B !important;">Accidentes conductor:</b></td>
-                <td style="text-align: end;">
-                    RD$@cotizadorPlanes.AccidentesConductor
-                </td>
-            </tr>
-            <tr>
-                <td>  <b style=" color: #6B6B6B !important;">Fianza judicial:</b></td>
-                <td style="text-align: end;">
-                    RD$@cotizadorPlanes.FianzaJudicial
-                </td>
-            </tr>
-            <tr>
-                <td>  <b style=" color: #6B6B6B !important;">Centro Asistencial al Automovilista:</b></td>
-                <td style="text-align: end;">
-                    @cotizadorPlanes.CentroAcistenciaAutomovilista
-                </td>
-            </tr>
-            <tr>
-                <td>  <b style=" color: #6B6B6B !important;">Asistencia MAPFRE BHD:</b></td>
-                <td style="text-align: end;">
-                    @cotizadorPlanes.AsistenciaMAPFREBHD
-                </td>
-            </tr>
-            <tr>
-                <td>  <b style=" color: #6B6B6B !important;">Depreciación:</b></td>
-                <td style="text-align: end;">
-                    @cotizadorPlanes.Depreciacion
-                </td>
-            </tr>
-            <tr>
-                <td>  <b style=" color: #6B6B6B !important;">Daños por pavimento irregular:</b></td>
-                <td style="text-align: end;">
-                    @cotizadorPlanes.DañosPorPavimento
-                </td>
-            </tr>
-            <tr>
-                <td>  <b style=" color: #6B6B6B !important;">Daños por agua:</b></td>
-                <td style="text-align: end;">
-                    @cotizadorPlanes.DañosPorAgua
-                </td>
-            </tr>
-            <tr>
-                <td>  <b style=" color: #6B6B6B !important;">Robos partes externas:</b></td>
-                <td style="text-align: end;">
-                    @cotizadorPlanes.RobosPartesExternas
-                </td>
-            </tr> *@
+        
         </table>
       
     </MudCardContent>
@@ -150,8 +95,10 @@
 
     public int cuotaSelected = 1;
     public bool esVisible;
+    private string telefono = "";
     protected override void OnInitialized()
     {
+        telefono = configuration["tel"]!;
         if(cotizadorPlanes.NombrePlan=="TREBOL PLUS")
         {
             esVisible = true;
@@ -161,6 +108,21 @@
     {
         cuotaSelected = value;
 
+    }
+    private async Task AbrirLLamame()
+    {
+        var opciones = new DialogOptions()
+        {
+            CloseButton = true,
+            MaxWidth = MaxWidth.Small,
+            FullWidth = true
+        };
+        var parametros = new DialogParameters()
+        {
+            {"Formulariocompletado", true}
+        };
+        var dialog = DialogService.Show<LlamameComponent>("", parametros, opciones);
+        var resultado = await dialog.Result;
     }
 
 }

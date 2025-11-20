@@ -18,7 +18,7 @@ namespace CotizadorAutoMAPFRESeguros.Share.Models
         public string mobile { get; set; } = string.Empty;
         public string phone { get; set; } = string.Empty;
         public int stateCode { get; set; } = 1;
-        public int provinces { get; set; }
+        //public int provinces { get; set; }
         //public int towns { get; set; }
     }
 }
